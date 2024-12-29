@@ -1,0 +1,16 @@
+// Entry point for your Sass build
+// Use Sass modules (variables, mixins, etc.)
+@use "variables";  
+@use "resets";      
+
+// Layout
+@use "./layout/container";
+@use "./layout/content";
+@use "./layout/header";
+@use "./layout/footer";
+
+// Components
+
+// Import external resources (Google Fonts) 
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap'); // Poppins
+// @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap'); // Bangers
