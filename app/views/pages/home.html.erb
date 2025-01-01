@@ -1,0 +1,30 @@
+<header class="header">
+    <div class="header-container">
+        <div class="logo">
+            <%= image_tag("logo.svg") %>
+        </div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">HTML & CSS</a>
+            <a href="#">JavaScript & React</a>
+            <a href="#">Ruby & Rails</a>
+            <a href="#">Tools</a>
+            <button class="btn btn-primary">Create Post</button>
+            <%= button_to "Log out", session_path, method: :delete if authenticated? %>
+            <%= link_to "Login", new_session_path unless authenticated? %>
+            <button class="btn btn-secondary">Search</button>
+        </nav>
+    </div>
+</header>
+
+<div class="content">
+    <div class="banner">
+        banner
+    </div>
+    <div class="main-content">
+        mainbar
+    </div>
+    <div class="right-bar">
+        sidebar
+    </div>
+</div>

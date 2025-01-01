@@ -15,14 +15,9 @@ html {
 }
 
 body {
-  min-width: 320px;
-  min-height: 480px;
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-
+  height: 100%;  
   background-color: var(--color-background);
-  color: var(--color-text-white);
+  color: var(--color-text-body);
   line-height: var(--line-height-body);
   font-family: var(--font-family-sans);
 }

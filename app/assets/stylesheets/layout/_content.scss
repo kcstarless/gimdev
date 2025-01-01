@@ -1,1 +1,40 @@
 @use '../mixins' as *;
+
+.content {
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    color: black;
+    max-width: 1100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    display: grid;
+    grid-template-columns: 1fr 0.4fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "banner sidebar"
+        "main sidebar";
+    gap: 20px;
+}
+
+.content .main-content {
+    grid-area: main;
+    border: var(--border-light);
+    background-color: var(--color-white);
+    padding: 20px;
+}
+
+.content .right-bar {
+    grid-area: sidebar;
+    border: var(--border-light);
+    background-color: var(--color-white);
+    padding: 20px;
+}
+
+.content .banner {
+    grid-area: banner;
+    border: var(--border-light);
+    background-color: var(--color-white);
+    padding: 20px;
+}
