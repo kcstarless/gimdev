@@ -1,0 +1,16 @@
+
+<%= simple_form_for post, html: { class: "new-post-form" } do |f| %>
+    <% if post.errors.any? %>
+        <div class="error-message">
+            <%= post.errors.full_messages.to_sentence.capitalize %>
+        </div>
+    <% end %>
+
+    <%= f.input :title %>
+
+    <%= f.input :categories, as: :check_boxes, collection: Category.all, 
+        label_method: :name, 
+        value_method: :id,
+        wrapper: :boolean %>
+
+<% end %>

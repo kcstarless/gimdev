@@ -8,7 +8,12 @@
     max-width: 1100px;
     margin-top: 20px;
     margin-bottom: 20px;
+    border: solid 1px black;
 
+
+}
+
+.content .home {
     display: grid;
     grid-template-columns: 1fr 0.4fr;
     grid-template-rows: auto;
@@ -16,25 +21,25 @@
         "banner sidebar"
         "main sidebar";
     gap: 20px;
+    height: 100%;
 }
-
-.content .main-content {
+.home-banner {
+    grid-area: banner;
+    border: var(--border-light);
+    background-color: var(--color-white);
+    padding: 20px;
+}
+.home-content {
     grid-area: main;
     border: var(--border-light);
     background-color: var(--color-white);
     padding: 20px;
 }
 
-.content .right-bar {
+.home-right-bar {
     grid-area: sidebar;
     border: var(--border-light);
     background-color: var(--color-white);
     padding: 20px;
 }
 
-.content .banner {
-    grid-area: banner;
-    border: var(--border-light);
-    background-color: var(--color-white);
-    padding: 20px;
-}
