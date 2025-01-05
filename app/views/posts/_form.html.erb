@@ -1,3 +1,4 @@
+<%# /views/posts/_form.html.erb %>
 
 <%= simple_form_for post, html: { class: "new-post-form" } do |f| %>
     <% if post.errors.any? %>
@@ -6,11 +7,13 @@
         </div>
     <% end %>
 
-    <%= f.input :title %>
+    <%= f.input :title %> <!-- Post Title -->
 
-    <%= f.input :categories, as: :check_boxes, collection: Category.all, 
+    <%= f.input :category_ids, as: :check_boxes, collection: Category.all, 
         label_method: :name, 
         value_method: :id,
-        wrapper: :boolean %>
+        wrapper: :boolean %> <!-- Post Categories from Category -->
+
+    <%= f.button :submit %>    
 
 <% end %>

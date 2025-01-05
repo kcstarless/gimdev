@@ -11,7 +11,12 @@
         banner
     </div>
     <div class="home-content">
-        mainbar
+        <% @posts.each do |post| %>
+        <div>
+            <h2><%= post.title %></h2>
+            <p><%= post.author.full_name %></p>
+        </div>
+        <% end %>
     </div>
     <div class="home-right-bar">
         sidebar
