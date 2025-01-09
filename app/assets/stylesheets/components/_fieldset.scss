@@ -1,0 +1,7 @@
+fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    padding: var(--space-l);
+    // border: none;
+}

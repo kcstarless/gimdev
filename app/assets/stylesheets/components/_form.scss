@@ -1,40 +1,75 @@
 .form-container {
-    display: grid;
-    grid-template-columns: 0.4fr 1fr;
+    display: flex;
+    flex-direction: column;
     padding: var(--space-m);
+    font-size: var(--font-size-l);
 
 }
 
-.new-post-form {
-    font-size: var(--font-size-xl);
-}
+.post-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    font-size: var(--font-size-l);
 
-.form_field {
-    margin-bottom: var(--space-m);
-
-    .field_label {
-        display: block;
-        margin-bottom: var(--space-xxxs);
+    .input-field {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xxxs);
     }
-    .field_input {
-        width: 100%;
-        // display: block;
-    }
-}
 
-
-.boolean_field {
-
-    .boolean-label {
-        display: block;
-        width: 100%;
+    .type-2 {
+        display: flex;
+        flex-direction: row;
         // border: solid 1px black;
+
+        .check-box {
+            display: flex;
+            flex-direction: row;
+            padding-right: var(--space-s);
+            gap: var(--space-xxs);
+            
+        }
+        label {
+            cursor: pointer;
+        }
     }
-    .boolean-input {
-        margin-right: var(--space-xxs);
-    }
-    .checkbox {
-        margin-right: var(--space-m);
+    .type-3 {
+        display: flex;
+        flex-direction: row;
     }
 }
+
+// .new-post-form {
+//     font-size: var(--font-size-xl);
+// }
+
+// .form_field {
+//     margin-bottom: var(--space-m);
+
+//     .field_label {
+//         display: block;
+//         margin-bottom: var(--space-xxxs);
+//     }
+//     .field_input {
+//         width: 100%;
+//         // display: block;
+//     }
+// }
+
+
+// .boolean_field {
+
+//     .boolean-label {
+//         display: block;
+//         width: 100%;
+//         // border: solid 1px black;
+//     }
+//     .boolean-input {
+//         margin-right: var(--space-xxs);
+//     }
+//     .checkbox {
+//         margin-right: var(--space-m);
+//     }
+// }
 

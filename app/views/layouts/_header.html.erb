@@ -4,11 +4,12 @@
             <%= image_tag("logo.svg") %>
         </div>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">HTML & CSS</a>
-            <a href="#">JavaScript & React</a>
-            <a href="#">Ruby & Rails</a>
-            <a href="#">Tools</a>
+            <%= link_to "Home", root_path %>
+            <%= link_to "HTML & CSS", posts_path(category: "HTML/CSS") %>
+            <%= link_to "JavaScript & React", posts_path(category: "JavaScript/React") %>
+            <%= link_to "Ruby & Rails", posts_path(category: "Ruby & Rails") %>
+            <%= link_to "Tools", posts_path(category: "Tools") %>
+            
             <%= button_to "Create Posts", new_post_path, method: :get %>
             <%= button_to "Log out", session_path, method: :delete if authenticated? %>
             <%= link_to "Login", new_session_path unless authenticated? %>

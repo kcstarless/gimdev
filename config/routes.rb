@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
 
+  get "keywords/search", to: "keywords#search", as: "keyword_search"
+
   # Posts routes
-  resources :posts
+  resources :posts do
+    resources :keywords, only: [ :create ]
+  end
 end

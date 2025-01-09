@@ -1,0 +1,43 @@
+
+<%= simple_form_for post, html: { class: "new-post-form", data: { controller: "keywords" }} do |f| %>
+    <% if post.errors.any? %>
+        <div class="error-message">
+            <%= post.errors.full_messages.to_sentence.capitalize %>
+        </div>
+    <% end %>
+
+    <%= f.input :title %> 
+
+    <%= f.input :category_ids, as: :check_boxes, collection: Category.all, 
+        label_method: :name, 
+        value_method: :id,
+        wrapper: :boolean %> <!-- Post Categories from Categories -->
+
+    <!-- Dynamic keyword suggestion/Add keyword -->
+    <div data-keywords-target="keywordsContainer">
+        <label for="keywords">Keywords</label>
+
+        <div class="keywords-list" data-keywords-target="keywordsList">
+            <!-- Display added keywords here -->
+        </div>
+
+        <input type="text" id="keyword-input" class="keywords-input"
+            placeholder="Search or add a keyword"
+            data-action="input->keywords#search"
+            data-keywords-target="input">
+        <ul id="keyword-suggestions" class="keyword-suggestions" data-keywords-target="suggestions">
+            <!-- Display suggestions here -->
+        </ul>
+        
+        <!-- Hidden input value holds keywords data for submission -->
+        <%= f.input :keywords, as: :hidden, input_html: { value: "", data: { keywords_target: "hiddenKeywords"}} %>
+
+        <button type="button" class="add-keyword-btn" data-action="click->keywords#addKeyword">Add Keyword</button>
+    </div>
+    
+    <%= turbo_frame_tag "add_section_turbo" do %>
+    <% end %>
+    
+    <%= f.button :submit %>    
+
+<% end %>

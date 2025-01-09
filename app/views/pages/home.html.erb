@@ -11,12 +11,7 @@
         banner
     </div>
     <div class="home-content">
-        <% @posts.each do |post| %>
-        <div>
-            <h2><%= post.title %></h2>
-            <p><%= post.author.full_name %></p>
-        </div>
-        <% end %>
+        <%= render template: "posts/index" %>
     </div>
     <div class="home-right-bar">
         sidebar

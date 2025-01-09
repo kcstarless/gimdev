@@ -11,6 +11,11 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.12",
-    "sass": "^1.83.0"
+    "@rails/actiontext": "^8.0.100",
+    "@stimulus-components/rails-nested-form": "^5.0.0",
+    "axios": "^1.7.9",
+    "sass": "^1.83.0",
+    "stimulus": "^3.2.2",
+    "trix": "^2.1.12"
   }
 }

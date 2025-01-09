@@ -1,0 +1,7 @@
+trix-editor {
+    resize: both;            /* Enables both horizontal and vertical resizing */
+    overflow: hidden;        /* Ensures content doesn't overflow when resized */
+    min-width: 300px;        /* Minimum width */
+    min-height: 150px;       /* Minimum height */
+    background-color: white;
+  }

@@ -7,3 +7,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# db/seeds.rb
+# Removes all records
+ActiveRecord::Base.connection.tables.each do |table|
+  next if table == 'schema_migrations' || table == 'ar_internal_metadata'
+  ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{table} CASCADE")
+end
+
+# Add your seed data here
