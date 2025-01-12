@@ -1,6 +1,8 @@
+<%# post section form partial %>
+
 <div class="post-section-wrapper" data-new-record="<%= f.object.new_record? %>">
     <%= f.rich_text_area :body %>
-    <button type="button" data-action="post-section#remove">Remove Section</button>
+    <br />
+    <button type="button" data-action="post-section#remove" class="btn btn-secondary">- Remove Section</button>
     <%= f.hidden_field :_destroy %>
-    <br /><br />
 </div>

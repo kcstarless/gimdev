@@ -1,16 +1,18 @@
 <div data-controller="image-preview" class="field cover-image">
+  <div class="image-container">
+    <% if post.cover_image.attached? %>
+      <!-- Display the existing image if it's attached -->
+      <%= image_tag post.cover_image, data: { image_preview_target: "preview" }, class: "cover-image image" %>
+    <% else %>
+      <!-- Empty image tag for preview (before file selection) -->
+      <%= image_tag "", data: { image_preview_target: "preview" }, class: "cover-image image" %>
+    <% end %>
+  </div>
+
   <%= form.file_field :cover_image,
     direct_upload: true,
     data: { image_preview_target: "input", action: "change->image-preview#preview" },
     id: "cover_image", class: "file-input" %>
   
-  <label for="cover_image" class="file-label">Pick cover image</label>
-
-  <% if post.cover_image.attached? %>
-    <!-- Display the existing image if it's attached -->
-    <%= image_tag post.cover_image, data: { image_preview_target: "preview" }, style: "width: 300px; height: auto;" %>
-  <% else %>
-    <!-- Empty image tag for preview (before file selection) -->
-    <%= image_tag "", data: { image_preview_target: "preview" }, class: "cover-image image", style: "width: 300px; height: auto;" %>
-  <% end %>
+  <label for="cover_image" class="file-label">+ Pick cover image</label>
 </div>

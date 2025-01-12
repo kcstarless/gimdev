@@ -1,9 +1,9 @@
 .btn {
     position: relative;
     display: inline-block;
+    border: none;
 
     &.btn-primary {
-        border: none;
         background-color: transparent;
         img {
             filter: brightness(0) saturate(100%) invert(30%) sepia(100%) saturate(100%) hue-rotate(180deg);
@@ -31,7 +31,25 @@
         border-radius: var(--border-radius-round);
         background-color: hsl(217, 22%, 12%);
     }
+
+    &.btn-secondary {
+        display: inline-block;
+        // padding: 10px 20px;
+        background-color: transparent;
+        color: var(--color-primary-rotate);
+        font-size: var(--font-size-s);
+        cursor: pointer;
+        // border-radius: 5px;
+        text-align: start;
+        // border-bottom: solid 2px;
+        font-weight: bold;
+    }
+    &.btn-secondary:hover {
+        filter: brightness(1.1);
+    }
 }
+
+
 /* Tooltip styles */
 .btn[data-tooltip]:hover::after {
     content: attr(data-tooltip); /* The content will be the text from data-tooltip */

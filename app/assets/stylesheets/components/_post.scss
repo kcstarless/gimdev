@@ -2,3 +2,63 @@
     border: var(--border-light);
     padding: 20px;
 }
+
+.post-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-l);
+}
+
+.created-by {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-l);
+    color: grey;
+    font-size: var(--font-size-s);
+    .author {
+        display: inline-flex;
+        gap: var(--space-xs);
+        align-items: center;
+    }
+    .created {
+        display: inline-flex;
+        gap: var(--space-xs);
+        align-items: center;
+    }
+
+    .svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.post-cover {
+    border: solid 1px black;
+    display: flex;
+
+    // max-width: 600px;
+    img {
+        display: flex;
+        justify-self: center;
+        justify-content: center;
+        // max-width: 600px;
+        align-self: center;
+    }
+}
+
+.keyword-item {
+    display: inline-block;
+    padding: var(--space-xxxs);
+    // border: solid 1px rgb(131, 131, 131);
+    color: white;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: var(--shadow-btn);
+    transform: skew(-20deg);
+    background-color: var(--color-primary);
+    font-size: var(--font-size-xs);
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}

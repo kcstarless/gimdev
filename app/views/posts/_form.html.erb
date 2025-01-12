@@ -5,7 +5,7 @@
     post_section_wrapper_selector_value: '.post-section-wrapper'}) do |form| %>
 
     <fieldset>
-        <legend>New Post</legend>
+        <legend>Title & Description</legend>
         <div class="field title">
             <%= form.text_field :title, placeholder: "Post title..."  %>
         </div>
@@ -18,64 +18,70 @@
     </fieldset>
     
     <fieldset>  <%# Categories, Keywords, difficulties %>
-        <div class="input-field type-2">
-            <%= form.label :categories %>
+        <legend>Categories</legend>
+        <div class="field category">
             <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
                 <div class="check-box">
-                    <%= b.check_box %> 
-                    <%= b.label %>
+                    <%= b.check_box %>  <!-- Add custom class for styling -->
+                    <%= b.label %>         <!-- Add custom class for label -->
                 </div>
             <% end %> <!-- Post Categories from Categories -->
         </div>
 
         <!-- Dynamic keyword suggestion/Add keyword -->
-        <div data-keywords-target="keywordsContainer" class="input-field type-3">
-            <label for="keywords">Keywords</label>
+        <div class="sub-container">
+            <div data-keywords-target="keywordsContainer" class="field keyword">
+                <div class="keyword-wrapper">
+                    <input type="text" id="keyword-input"
+                        placeholder="Search & add a keyword"
+                        data-action="input->keywords#search"
+                        data-keywords-target="input"
+                        autocomplete="off" />
 
-            <div class="keywords-list" data-keywords-target="keywordsList">
-                <!-- Display added keywords here -->
+                    <ul id="keyword-suggestions" class="keyword-suggestions" data-keywords-target="suggestions">
+                        <!-- Display suggestions here -->
+                    </ul>
+                </div>
+
+                <button type="button" class="btn btn-secondary" data-action="click->keywords#addKeyword">+ Add Keyword</button>
+
+                <!-- Hidden input to hold the selected keywords -->
+                <%= form.hidden_field :keywords, value: "", data: { keywords_target: "hiddenKeywords" } %>
             </div>
-
-            <input type="text" id="keyword-input" class="keywords-input"
-                placeholder="Search or add a keyword"
-                data-action="input->keywords#search"
-                data-keywords-target="input">
-            <ul id="keyword-suggestions" class="keyword-suggestions" data-keywords-target="suggestions">
-                <!-- Display suggestions here -->
-            </ul>
-            
-            <!-- Hidden input to hold the selected keywords -->
-            <%= form.hidden_field :keywords, value: "", data: { keywords_target: "hiddenKeywords" } %>
-            <button type="button" class="add-keyword-btn" data-action="click->keywords#addKeyword">Add Keyword</button>
+            <div class="field difficulty">
+                <%= form.label :difficulty %>
+                <%= form.select :difficulty, options_for_select(['Beginner', 'Intermediate', 'Advanced'], post.difficulty || 'easy') %>
+            </div>
         </div>
-        <div class="input-field type-3">
-            <%= form.label :difficulty %>
-            <%= form.select :difficulty, options_for_select(['Beginner', 'Intermediate', 'Advanced'], post.difficulty || 'easy') %>
+        
+        <div class="keywords-list" data-keywords-target="keywordsList">
+                    <!-- Display added keywords here -->
         </div>
     </fieldset>
-    
-    <br />
 
-    <%# Template for rendering a new section form (used for dynamic form addition) %>
-    <template data-post-section-target="template">
-        <%= form.fields_for :sections, Section.new, child_index: "NEW_RECORD" do |section_fields| %>
+    <fieldset class="section">
+        <legend>Contents</legend>
+        <%# Template for rendering a new section form (used for dynamic form addition) %>
+        <template data-post-section-target="template">
+            <%= form.fields_for :sections, Section.new, child_index: "NEW_RECORD" do |section_fields| %>
+                <%= render "post_section_form", f: section_fields %>
+            <% end %>
+        </template>
+
+        <%# Render existing sections forms (for already saved sections associated with the post) %>
+        <%= form.fields_for :sections do |section_fields| %>
             <%= render "post_section_form", f: section_fields %>
         <% end %>
-    </template>
 
-    <%# Render existing sections forms (for already saved sections associated with the post) %>
-    <%= form.fields_for :sections do |section_fields| %>
-        <%= render "post_section_form", f: section_fields %>
-    <% end %>
+        <%# Target container for dynamically added section forms %>
+        <div data-post-section-target="target"></div>
 
-    <%# Target container for dynamically added section forms %>
-    <div data-post-section-target="target"></div>
-
-    <button type="button" data-action="post-section#add">Add Section</button>
-
-    <%# End template%>
+        <button type="button" data-action="post-section#add" class="btn btn-secondary">+ Add Section</button>
+        <%# End template%>
+    </fieldset>
     
-    <br /><br />
+    
+    <br />
     <%= form.submit %>
 <% end %>
 

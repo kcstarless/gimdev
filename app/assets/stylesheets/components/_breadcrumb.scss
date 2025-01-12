@@ -1,0 +1,27 @@
+nav ol.breadcrumb {
+    // padding: 10px 0;
+    padding-bottom: var(--space-s);
+    // background-color: #f8f9fa;
+    border-radius: 5px;
+    font-size: var(--font-size-s);
+  }
+  
+  nav ol.breadcrumb li {
+    display: inline;
+  }
+  
+  nav ol.breadcrumb li+li::before {
+    content: ">";
+    margin: 0 10px;
+    color: #777;
+  }
+  
+  nav ol.breadcrumb li a {
+    text-decoration: none;
+    color: var(--color-primary-rotate);
+  }
+  
+  nav ol.breadcrumb li.active {
+    color: #6c757d;
+  }
+  
