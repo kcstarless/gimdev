@@ -3,13 +3,12 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
-import RailsNestedForm from '@stimulus-components/rails-nested-form'
-import ImagePreviewController from "./image_preview_controller"
 
+import ImagePreviewController from "./image_preview_controller"
 application.register("image-preview", ImagePreviewController)
 
 import KeywordsController from "./keywords_controller"
 application.register("keywords", KeywordsController)
 
-const application = Application.start()
-application.register('nested-form', RailsNestedForm)
+import RailsNestedForm from '@stimulus-components/rails-nested-form'
+application.register('post-section', RailsNestedForm)
