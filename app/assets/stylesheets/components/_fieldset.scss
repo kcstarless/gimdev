@@ -3,5 +3,12 @@ fieldset {
     flex-direction: column;
     gap: var(--space-m);
     padding: var(--space-l);
+    background-color: var(--color-background);
     // border: none;
+}
+
+legend {
+    font-size: var(--font-size-xl);
+    padding-left: var(--space-s);
+    padding-right: var(--space-s);
 }

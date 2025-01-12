@@ -1,45 +1,49 @@
 @use '../mixins' as *;
 
-.content {
+.main {
     width: 100%;
     margin: 0 auto;
     height: 100%;
     color: black;
     max-width: 1100px;
-    margin-top: 20px;
-    margin-bottom: 20px;
     // border: solid 1px black;
-
-
+    margin-top: var(--space-l);
+    margin-bottom: var(--space-l);
 }
 
-.content .home {
+.container {
     display: grid;
     grid-template-columns: 1fr 0.4fr;
     grid-template-rows: auto;
     grid-template-areas:
+        // "banner banner"
+        "main sidebar";
+    gap: var(--space-l);
+    height: 100%;
+    
+}
+.container.home {
+    grid-template-areas:
         "banner banner"
         "main sidebar";
-    gap: 20px;
-    height: 100%;
 }
-.home-banner {
+.banner {
     grid-area: banner;
     border: var(--border-light);
     background-color: var(--color-white);
-    padding: 20px;
+    padding: var(--space-m);
 }
-.home-content {
+.content {
     grid-area: main;
     border: var(--border-light);
     background-color: var(--color-white);
-    padding: 20px;
+    padding: var(--space-m);
 }
 
-.home-right-bar {
+.sidebar {
     grid-area: sidebar;
     border: var(--border-light);
     background-color: var(--color-white);
-    padding: 20px;
+    padding: var(--space-m);
 }
 

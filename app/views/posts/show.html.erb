@@ -1,5 +1,18 @@
-<h1><%= @post.title %></h1>
-<p><%= @post.author.full_name %><p>
-<br />
-<div><%= @post.difficulty %></div>
-<div><%= @post.description %></div>
+<!--  /views/posts/show.html.erb 
+      renders a post, targets turbo_post frame
+-->
+
+<%= turbo_frame_tag "turbo_post" do %>
+  <h1><%= @post.title %></h1>
+    <%= @post.author.full_name %>
+    <% if @post.cover_image.present? %>
+      <%= image_tag(@post.cover_image, style: "width: 300px; height: auto") %>
+    <% end %>
+    <br />
+    <%= @post.difficulty %>
+    <%= @post.description %>
+    <br />
+    <% @post.sections.each do |section| %>
+      <%= render partial: "sections/attachable", locals: { section: section } %>
+    <% end %>
+<% end %>

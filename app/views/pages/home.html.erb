@@ -1,4 +1,4 @@
-<%# app/views/pages/home.html.erb %>
+<%# app/views/pages/index.html.erb %>
 <!-- This is the content of the home page -->
 <!-- It will be rendered inside the layout -->
 <!-- app/views/layouts/application.html.erb -->
@@ -6,14 +6,20 @@
 <!-- app/views/layouts/application.html.erb -->
 
 
-<div class="home">
-    <div class="home-banner">
-        banner
-    </div>
-    <div class="home-content">
+<div class="container <%= "home" unless @category  %>">
+    <% unless @category %>
+        <div class="banner">
+            banner
+        </div>
+    <% end %>
+    
+    <%= turbo_frame_tag "turbo_post", class: "content" do %>
+        
         <%= render template: "posts/index" %>
-    </div>
-    <div class="home-right-bar">
+        
+    <% end %>
+
+    <div class="sidebar">
         sidebar
     </div>
 </div>

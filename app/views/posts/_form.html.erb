@@ -1,19 +1,23 @@
-<%# /views/posts/_form.html.erb %>
-
+<!-- /views/posts/_form.html.erb 
+-->
 <%= form_with(model: post, class: "post-form",
-    data: { controller: "post-section keywords", 
+    data: { controller: "post-section keywords",
     post_section_wrapper_selector_value: '.post-section-wrapper'}) do |form| %>
 
-    <div class="input-field type-1">
-        <%= form.label :title %>
-        <%= form.text_field :title  %>
-    </div>
-
-    <div class="input-field type-1">
-        <%= form.label :description %>
-        <%= form.text_area :description %>
-    </div>
     <fieldset>
+        <legend>New Post</legend>
+        <div class="field title">
+            <%= form.text_field :title, placeholder: "Post title..."  %>
+        </div>
+
+        <div class="field description">
+            <%= form.text_field :description, placeholder: "Post short description..." %>
+        </div>
+
+        <%= render "image_preview", form: form, post: post %>
+    </fieldset>
+    
+    <fieldset>  <%# Categories, Keywords, difficulties %>
         <div class="input-field type-2">
             <%= form.label :categories %>
             <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>

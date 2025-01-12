@@ -1,6 +1,11 @@
 <%# /views/posts/new.html.erb %>
+<%# New post form, targets turbo_post frame.  %>
 
-<div class="form-container">
-    <h1>Create new post</h1>
-    <%= render "form", post: @post %>
+<%= turbo_frame_tag "turbo_post" do %>
+<div class="content">
+    <div class="form-container">
+        <h1>Create new post</h1>
+        <%= render "form", post: @post %>
+    </div>
 </div>
+<% end %>

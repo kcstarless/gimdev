@@ -1,0 +1,7 @@
+<!-- /sections/_attachable.html.erb -->
+
+called
+<% if section.image.attached? %>
+triggered
+    <span><%= image_tag section.image %></span>
+<% end %>

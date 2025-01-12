@@ -1,19 +1,22 @@
 @use '../mixins' as *;
 
 header {
-    height: 65px;
     width: 100%;
-    background-color: #171C24;
+    background-color: hsl(217, 22%, 12%);
     margin: 0 auto;
 }
 
 header .header-container {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: var(--space-xxxl);
-    height: 100%;
+
+    height: 65px;
     max-width: 1100px;
     margin: 0 auto;
+
+    
+    // padding: 20px;
     // border: var(--border-light);
 
     .logo {
@@ -21,17 +24,28 @@ header .header-container {
     }
     nav {
         display: flex;
-        justify-content: start;
+        // justify-content: start;
         align-items: center;
-        gap: var(--space-xl);
+        gap: var(--space-l);
+        z-index: 2;
+        position: relative;
+    }
+    .logins {
+        display: flex;
+        align-items: center;
+        gap: var(--space-m);
+        z-index: 2;
+        .btn {
+            vertical-align: middle;
+        }
+    }
 
-        a {
-            color: white;
-            font-weight: bold;
-            font-size: var(--font-size-s);
-        }
-        a:hover {
-            color: var(--color-primary-rotate);
-        }
+    a {
+        color: white;
+        font-weight: bold;
+        font-size: var(--font-size-s);
+    }
+    a:hover {
+        color: var(--color-primary-rotate);
     }
 }

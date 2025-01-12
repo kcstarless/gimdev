@@ -1,5 +1,4 @@
 <div class="post-section-wrapper" data-new-record="<%= f.object.new_record? %>">
-    <%= f.label :body%>
     <%= f.rich_text_area :body %>
     <button type="button" data-action="post-section#remove">Remove Section</button>
     <%= f.hidden_field :_destroy %>

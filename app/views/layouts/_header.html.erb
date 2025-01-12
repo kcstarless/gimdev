@@ -1,3 +1,5 @@
+<%# Navigation bar %>
+
 <header class="header">
     <div class="header-container">
         <div class="logo">
@@ -5,15 +7,27 @@
         </div>
         <nav>
             <%= link_to "Home", root_path %>
-            <%= link_to "HTML & CSS", posts_path(category: "HTML/CSS") %>
-            <%= link_to "JavaScript & React", posts_path(category: "JavaScript/React") %>
-            <%= link_to "Ruby & Rails", posts_path(category: "Ruby & Rails") %>
-            <%= link_to "Tools", posts_path(category: "Tools") %>
-            
-            <%= button_to "Create Posts", new_post_path, method: :get %>
-            <%= button_to "Log out", session_path, method: :delete if authenticated? %>
-            <%= link_to "Login", new_session_path unless authenticated? %>
-            <button class="btn btn-secondary">Search</button>
+            <%= link_to "HTML & CSS", root_path(category: "HTML/CSS") %>
+            <%= link_to "JavaScript & React", root_path(category: "JavaScript/React") %>
+            <%= link_to "Ruby & Rails", root_path(category: "Ruby & Rails") %>
+            <%= link_to "Tools", root_path(category: "Tools") %>
+            <%= link_to "+", new_post_path, class: "btn btn-create-post", data: { turbo_frame: "turbo_post", tooltip: "Create new post" } %>
         </nav>
+
+        
+
+        <div class="logins">
+            <button class="btn btn-primary"><%= image_tag("search.svg") %></button>
+            <% if authenticated? %>
+                <%= button_to session_path, class: "btn btn-primary", method: :delete, data: { tooltip: "Log out" } do %>
+                    <%= image_tag("logout.svg", alt: "Log out") %>
+                <% end %>
+            <% end %>
+            <% unless authenticated? %>
+                <%= button_to new_session_path, class: "btn btn-primary", data: { tooltip: "Login" } do %>
+                    <%= image_tag("login.svg", alt: "Login") %>
+                <% end %>
+            <% end %>   
+        </div>
     </div>
 </header>

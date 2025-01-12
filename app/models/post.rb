@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_and_belongs_to_many :categories, dependent: :destroy
   has_and_belongs_to_many :keywords
   has_many :sections, dependent: :destroy
+  has_one_attached :cover_image
 
   accepts_nested_attributes_for :sections, allow_destroy: true, reject_if: :all_blank
 
