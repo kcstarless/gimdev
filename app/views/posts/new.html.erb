@@ -2,11 +2,13 @@
 <%# New post form, targets turbo_post frame.  %>
 
 <%= turbo_frame_tag "turbo_post" do %>
-    <div class="form-container">
-        <div class="content">
+
+    <div class="content">
+        <div class="form-container">
         <h2>New Post</h2>
         <br />
         <%= render "form", post: @post %>
         </div>
     </div>
+
 <% end %>

@@ -1,4 +1,4 @@
-nav ol.breadcrumb {
+  ol.breadcrumb {
     // padding: 10px 0;
     padding-bottom: var(--space-s);
     // background-color: #f8f9fa;
@@ -6,22 +6,22 @@ nav ol.breadcrumb {
     font-size: var(--font-size-s);
   }
   
-  nav ol.breadcrumb li {
+  ol.breadcrumb li {
     display: inline;
   }
   
-  nav ol.breadcrumb li+li::before {
+  ol.breadcrumb li+li::before {
     content: ">";
     margin: 0 10px;
     color: #777;
   }
   
-  nav ol.breadcrumb li a {
+  ol.breadcrumb li a {
     text-decoration: none;
     color: var(--color-primary-rotate);
   }
   
-  nav ol.breadcrumb li.active {
+  ol.breadcrumb li.active {
     color: #6c757d;
   }
   

@@ -9,15 +9,13 @@
         <div class="logo">
             <%= image_tag("logo.svg") %>
         </div>
-
-
         
         <nav class="nav-link" data-navbar-target="navLinks">
             <%= link_to "Home", root_path %>
-            <%= link_to "HTML & CSS", root_path(category: "HTML/CSS") %>
-            <%= link_to "JavaScript & React", root_path(category: "JavaScript/React") %>
-            <%= link_to "Ruby & Rails", root_path(category: "Ruby & Rails") %>
-            <%= link_to "Tools", root_path(category: "Tools") %>
+            <%= link_to "Frontend", root_path(category: "frontend") %>
+            <%= link_to "Backend", root_path(category: "backend") %>
+            <%= link_to "AI", root_path(category: "AI") %>
+            <%= link_to "Tools+", root_path(category: "tools") %>
         </nav>
 
         <div class="create-button-container">

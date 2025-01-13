@@ -36,8 +36,9 @@
     border: solid 1px black;
     display: flex;
     justify-content: center;
-    // max-width: 600px;
-    
+    max-width: 600px;
+    margin-left: auto;       /* Automatically adjust the left margin */
+    margin-right: auto; 
     img {
         display: flex;
     }
@@ -58,4 +59,8 @@
     white-space: nowrap;
     overflow: hidden; 
     text-overflow: ellipsis;
+}
+
+.post-main {
+
 }

@@ -5,21 +5,23 @@
 <!-- The layout will be rendered inside the application layout -->
 <!-- app/views/layouts/application.html.erb -->
 
+<div class="main">
+    <div class="container <%= "home" unless @category  %>">
 
-<div class="container <%= "home" unless @category  %>">
-    <% unless @category %>
-        <div class="banner">
-            banner
+        <% unless @category %>
+            <div class="banner">
+                banner
+            </div>
+        <% end %>
+        
+        <%= turbo_frame_tag "turbo_post", class: "content" do %>
+            
+            <%= render template: "posts/index" %>
+            
+        <% end %>
+
+        <div class="sidebar">
+            sidebarasdfasdgasdgasdgasdgasdgasdgagsadadfsdfsadf
         </div>
-    <% end %>
-    
-    <%= turbo_frame_tag "turbo_post", class: "content" do %>
-        
-        <%= render template: "posts/index" %>
-        
-    <% end %>
-
-    <div class="sidebar">
-        sidebar
     </div>
 </div>

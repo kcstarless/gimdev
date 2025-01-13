@@ -1,5 +1,5 @@
   <!-- Breadcrumb Navigation -->
-  <nav aria-label="breadcrumb">
+  <div aria-label="breadcrumb">
     <ol class="breadcrumb">
       <!-- Home Link -->
       <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
@@ -10,4 +10,4 @@
       <!-- Current Post (No link for the current page) -->
       <li class="breadcrumb-item active" aria-current="page"><%= @post.title %></li>
     </ol>
-  </nav>
+  </div>

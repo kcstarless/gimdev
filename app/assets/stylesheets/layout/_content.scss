@@ -13,19 +13,21 @@
 
 .container {
     display: grid;
-    grid-template-columns: 1fr 0.4fr;
+    grid-template-columns: minmax(100px, 1fr) 0.4fr;
     grid-template-rows: auto;
     grid-template-areas:
         "main sidebar"
         "main sidebar";
     gap: var(--space-l);
-    height: 100%;
-    
+    height: 100%; 
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .container.home {
     grid-template-areas:
         "banner banner"
         "main sidebar";
+
 }
 .banner {
     grid-area: banner;
@@ -37,7 +39,9 @@
     grid-area: main;
     border: var(--border-light);
     background-color: var(--color-white);
-    padding: var(--space-m);
+    padding: var(--space-l);
+
+    // width: 100%;
 }
 
 .sidebar {
@@ -45,6 +49,8 @@
     border: var(--border-light);
     background-color: var(--color-white);
     padding: var(--space-m);
+    margin-right: 10px;
+    overflow-wrap: anywhere;
 }
 
 
@@ -67,8 +73,6 @@
         border: var(--border-light);
         background-color: var(--color-white);
         padding: var(--space-m);
-        margin-right: 10px;
-        margin-left: 10px;
     }
     
     .sidebar {
