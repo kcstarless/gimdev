@@ -12,3 +12,6 @@ application.register("keywords", KeywordsController)
 
 import RailsNestedForm from '@stimulus-components/rails-nested-form'
 application.register('post-section', RailsNestedForm)
+
+import NavBarController from "./navbar_controller"
+application.register('navbar', NavBarController)

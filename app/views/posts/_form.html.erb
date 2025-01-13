@@ -30,6 +30,10 @@
 
         <!-- Dynamic keyword suggestion/Add keyword -->
         <div class="sub-container">
+            <div class="field difficulty">
+                <%= form.label :difficulty %>
+                <%= form.select :difficulty, options_for_select(['Beginner', 'Intermediate', 'Advanced'], post.difficulty || 'easy') %>
+            </div>
             <div data-keywords-target="keywordsContainer" class="field keyword">
                 <div class="keyword-wrapper">
                     <input type="text" id="keyword-input"
@@ -48,10 +52,8 @@
                 <!-- Hidden input to hold the selected keywords -->
                 <%= form.hidden_field :keywords, value: "", data: { keywords_target: "hiddenKeywords" } %>
             </div>
-            <div class="field difficulty">
-                <%= form.label :difficulty %>
-                <%= form.select :difficulty, options_for_select(['Beginner', 'Intermediate', 'Advanced'], post.difficulty || 'easy') %>
-            </div>
+            
+
         </div>
         
         <div class="keywords-list" data-keywords-target="keywordsList">
@@ -80,8 +82,7 @@
         <%# End template%>
     </fieldset>
     
-    
-    <br />
+
     <%= form.submit %>
 <% end %>
 

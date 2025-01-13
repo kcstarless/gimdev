@@ -103,12 +103,16 @@
                 cursor: pointer;
             }        
         }
-
+        @media (max-width: 768px) {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     .sub-container {
         display: flex;
         gap: var(--space-m);
+
         .keyword {
             display: flex;
             flex-direction: row;
@@ -129,6 +133,7 @@
                     }
                 }
             }
+
             input {
                 // border: none;
                 border-top: none;
@@ -176,6 +181,11 @@
                 border-bottom: 2px solid var(--color-primary-rotate); /* Add a bottom border on focus */
                 font-size: var(--font-size-s); /* Add a soft blue shadow */
             }
+        }
+        @media (max-width: 768px) {
+            display: flex;
+            flex-direction: column;
+            
         }
     }
 

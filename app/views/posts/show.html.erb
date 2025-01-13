@@ -1,7 +1,6 @@
 <!--  /views/posts/show.html.erb 
       renders a post, targets turbo_post frame
 -->
-<div class="content">
 <%= turbo_frame_tag "turbo_post" do %>
 
   <%= render "layouts/breadcrumb" %>
@@ -44,4 +43,3 @@
       <%# <%= render partial: "sections/attachable", locals: { section: section } %>
     <% end %>
 <% end %>
-</div>

@@ -16,7 +16,7 @@
     grid-template-columns: 1fr 0.4fr;
     grid-template-rows: auto;
     grid-template-areas:
-        // "banner banner"
+        "main sidebar"
         "main sidebar";
     gap: var(--space-l);
     height: 100%;
@@ -47,3 +47,32 @@
     padding: var(--space-m);
 }
 
+
+/* Media Query for small screens */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "main main";
+    }
+
+    .banner {
+        grid-area: banner;
+        border: var(--border-light);
+        background-color: var(--color-white);
+        padding: var(--space-m);
+    }
+    .content {
+        grid-area: main;
+        border: var(--border-light);
+        background-color: var(--color-white);
+        padding: var(--space-m);
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    
+    .sidebar {
+        grid-area: sidebar;
+        display: none;
+    }
+}

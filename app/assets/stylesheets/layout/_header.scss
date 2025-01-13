@@ -8,31 +8,22 @@ header {
 
 header .header-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
-
+    padding-left: var(--space-m);
+    padding-right: var(--space-m);
     height: 65px;
     max-width: 1100px;
     margin: 0 auto;
-
-    
-    // padding: 20px;
-    // border: var(--border-light);
+    gap: 30px;
 
     .logo {
         color: var(--color-text-white); 
     }
-    nav {
-        display: flex;
-        // justify-content: start;
-        align-items: center;
-        gap: var(--space-l);
-        z-index: 2;
-        position: relative;
-    }
+
     .logins {
         display: flex;
-        align-items: center;
+        margin-left: auto; 
         gap: var(--space-m);
         z-index: 2;
         .btn {
@@ -47,5 +38,78 @@ header .header-container {
     }
     a:hover {
         color: var(--color-primary-rotate);
+    }
+}
+
+nav {
+    display: flex;
+    // justify-content: start;
+    align-items: center;
+    gap: var(--space-l);
+    z-index: 2;
+    position: relative;
+}
+
+.create-button-container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Hamburger icon - hidden by default */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+/* Media Query for small screens */
+@media (max-width: 768px) {
+    
+    /* Hide the navigation links on small screens */
+    nav {
+        position: absolute;
+        top: 60px;
+        left: -20px;
+
+        display: none;
+        flex-direction: column;
+        align-items: start;
+        width: 110%;
+        background-color: hsl(217, 22%, 12%);
+        color: var(--color-primary-rotate);
+        padding: 20px;
+        box-shadow: var(--shadow-btn);
+
+        a {
+            color: white;
+            font-weight: bold;
+            font-size: var(--font-size-s);
+            padding-left: 20px;
+        }
+        a:hover {
+            color: var(--color-primary-rotate);
+        }
+    }
+    .create-button-container {
+        position: relative;
+        margin-left: auto; 
+        z-index: 2;
+        .btn {
+            &.btn-create-post {
+                font-size: var(--font-size-xxxl);
+                position: relative;
+                align-items: center;
+                padding-right: 30px;
+            }
+        }
+    }
+
+    /* Show hamburger on small screens */
+    .hamburger {
+        display: block;
+    }
+
+    /* Show the menu when active class is added */
+    nav.active {
+        display: flex;
     }
 }

@@ -1,19 +1,28 @@
 <%# Navigation bar %>
 
-<header class="header">
+<header class="header" data-controller="navbar">
     <div class="header-container">
+        <!-- Hamburger Icon for small screens -->
+        <div class="hamburger" data-target="navbar.hamburger" data-action="click->navbar#toggleMenu">
+            <%= image_tag("menu.svg", alt: "Menu") %> <!-- Replace with your hamburger icon -->
+        </div>
         <div class="logo">
             <%= image_tag("logo.svg") %>
         </div>
-        <nav>
+
+
+        
+        <nav class="nav-link" data-navbar-target="navLinks">
             <%= link_to "Home", root_path %>
             <%= link_to "HTML & CSS", root_path(category: "HTML/CSS") %>
             <%= link_to "JavaScript & React", root_path(category: "JavaScript/React") %>
             <%= link_to "Ruby & Rails", root_path(category: "Ruby & Rails") %>
             <%= link_to "Tools", root_path(category: "Tools") %>
-            <%= link_to "+", new_post_path, class: "btn btn-create-post", data: { turbo_frame: "turbo_post", tooltip: "Create new post" } %>
         </nav>
 
+        <div class="create-button-container">
+            <%= link_to "+", new_post_path, class: "btn btn-create-post" %>
+        </div>
         
 
         <div class="logins">

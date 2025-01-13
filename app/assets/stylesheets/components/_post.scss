@@ -35,14 +35,11 @@
 .post-cover {
     border: solid 1px black;
     display: flex;
-
+    justify-content: center;
     // max-width: 600px;
+    
     img {
         display: flex;
-        justify-self: center;
-        justify-content: center;
-        // max-width: 600px;
-        align-self: center;
     }
 }
 
