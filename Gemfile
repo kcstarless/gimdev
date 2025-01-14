@@ -66,6 +66,6 @@ group :test do
 end
 
 # added group :test, do
-gem "simple_form", "~> 5.1.0"
+gem "simple_form", "~> 5.3.1"
 gem "actiontext"
 gem "ruby-vips", "~> 2.2", ">= 2.2.2"
