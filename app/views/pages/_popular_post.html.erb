@@ -1,0 +1,25 @@
+
+<div class="sidebar-box popular">
+    <div class="box-title">
+        <div>Popular Posts</div>
+        <%= image_tag("trending.svg", class: "svg") %>
+    </div>
+    
+    <hr>
+
+    <% Post.popular_posts.each do |post| %>
+       <%= link_to post_path(post), data: { turbo_frame: "main_content_frame" } do %>
+            <div class="box-content">
+                <div class="title">
+                    <%= post.title %>
+                </div>
+                <div class="created-by">
+                    <div class="created">
+                        <%= image_tag("created.svg", class: "svg") %>
+                        <%= post.created_at.strftime("%A, %d %B %y") %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    <% end %>
+</div>

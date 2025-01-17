@@ -40,17 +40,14 @@
     border: var(--border-light);
     background-color: var(--color-white);
     padding: var(--space-l);
-
-    // width: 100%;
 }
 
 .sidebar {
     grid-area: sidebar;
-    border: var(--border-light);
-    background-color: var(--color-white);
-    padding: var(--space-m);
-    margin-right: 10px;
-    overflow-wrap: anywhere;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-l);
+    // overflow-wrap: anywhere;
 }
 
 
@@ -59,6 +56,11 @@
     .container {
         grid-template-columns: 1fr;
         grid-template-areas:
+            "main main";
+    }
+    .container.home {
+        grid-template-areas:
+            "banner banner"
             "main main";
     }
 
@@ -73,6 +75,7 @@
         border: var(--border-light);
         background-color: var(--color-white);
         padding: var(--space-m);
+        // margin-right: -23px;
     }
     
     .sidebar {

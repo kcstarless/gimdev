@@ -1,14 +1,16 @@
 <%# /views/posts/new.html.erb %>
 <%# New post form, targets turbo_post frame.  %>
-
-<%= turbo_frame_tag "turbo_post" do %>
-
-    <div class="content">
-        <div class="form-container">
-        <h2>New Post</h2>
+<%= turbo_frame_tag "main_content_frame" do %> 
+<div class="form-container">
+        <div class="post-navi">
+                <h3>New Post</h3>
+                <div style="display: inline-flex; align-items: center;">
+                        <%= image_tag("back.svg", class: "svg") %>
+                        <%= link_to sanitize("Back to posts"), posts_path, class: "btn back" %>
+                </div>
+        </div>
+        <hr>
         <br />
         <%= render "form", post: @post %>
-        </div>
-    </div>
-
+</div>
 <% end %>

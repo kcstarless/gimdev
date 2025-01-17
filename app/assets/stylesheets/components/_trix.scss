@@ -1,7 +1,8 @@
 trix-editor {
-    resize: both;            /* Enables both horizontal and vertical resizing */
+    resize: vertical;            /* Enables both horizontal and vertical resizing */
     overflow: hidden;        /* Ensures content doesn't overflow when resized */
-    min-width: 300px;        /* Minimum width */
+    min-width: auto; 
+    max-width: 650px;       /* Minimum width */
     min-height: 150px;       /* Minimum height */
     background-color: white;
   }
@@ -15,3 +16,30 @@ trix-editor {
     // height: auto; 
     border: solid 1px grey;
   }
+
+.trix-button--icon-strike,
+// .trix-button-group--block-tools,
+.trix-button-group--history-tools {
+  display: none !important;
+}
+
+/* Toolbar and Buttons */
+// .trix-button-row {
+//   display: flex;
+//   flex-wrap: nowrap;
+//   justify-content: space-between;
+// }
+
+// @media (max-width: 768px) {
+//   .trix-button-row {
+//     flex-direction: column;
+//     align-items: center;
+//   }
+
+//   .trix-button--icon-strike,
+//   .trix-button-group--block-tools,
+//   .trix-button-group--file-tools,
+//   .trix-button-group--history-tools {
+//     display: inline-block !important;  /* Show on mobile if needed */
+//   }
+// }

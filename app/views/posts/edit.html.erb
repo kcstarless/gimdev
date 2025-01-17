@@ -1,0 +1,16 @@
+<%= turbo_frame_tag "main_content_frame" do %>
+<div class="form-container">
+    <div class="post-navi">
+      <h3>Edit Post</h3>
+      <div style="display: inline-flex; align-items: center;">
+              <%= image_tag("back.svg", class: "svg") %>
+              <%= link_to sanitize("Back to posts"), post_path(@post), class: "btn back" %>
+      </div>
+    </div>
+    <hr>
+    <br />
+    <%= turbo_frame_tag @post do %>
+      <%= render "form", post: @post %>
+    <% end %>
+  </div>
+<% end %>

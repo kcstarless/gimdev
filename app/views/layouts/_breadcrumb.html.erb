@@ -5,7 +5,9 @@
       <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
       
       <!-- Posts Link -->
-      <li class="breadcrumb-item"><%= link_to "Posts", posts_path %></li>
+      <% if @category %>
+        <li class="breadcrumb-item"><%= link_to @category.capitalize, root_path(category: @category) %></li>
+      <% end %>
 
       <!-- Current Post (No link for the current page) -->
       <li class="breadcrumb-item active" aria-current="page"><%= @post.title %></li>

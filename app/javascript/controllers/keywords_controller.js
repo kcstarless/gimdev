@@ -46,6 +46,7 @@ export default class extends Controller {
     console.log(this.keywords);
     this.addKeywordToList(keyword);
     this.keywords.push(keyword);
+    this.updateHiddenField();
     this.clearSuggestions();
   }
 

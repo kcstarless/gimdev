@@ -1,9 +1,17 @@
 <!--  /views/posts/show.html.erb 
       renders a post, targets turbo_post frame
 -->
-<%= turbo_frame_tag "turbo_post" do %>
 
-  <%= render "layouts/breadcrumb" %>
+<%= turbo_frame_tag "main_content_frame" do %>
+  <div class="post-navi">
+    <%= render "layouts/breadcrumb", category: @category  %>
+    <div style="display: inline-flex; align-items: center;">
+      <%= image_tag("edit.svg", class: "svg") %>
+      <%= link_to "Edit", edit_post_path(@post), class: "btn edit" %>
+    </div>
+  </div>
+
+  <hr>
 
   <div class="post-header">
     <h1><%= @post.title %></h1>
@@ -17,7 +25,6 @@
       <div class="created">
         <%= image_tag("created.svg", class: "svg") %>
         <%= @post.created_at.strftime("%A, %d %B %y") %>
-
       </div>
     </div>
 
@@ -30,17 +37,18 @@
 
 
   <div class="post-main">
-  <% if @post.cover_image.present? %>
-    <div class="post-cover">
-      <%= image_tag(@post.cover_image) %>
-    </div>
-  <% end %>
+    <% if @post.cover_image.present? %>
+      <div class="post-cover">
+        <%= image_tag(@post.cover_image) %>
+      </div>
+    <% end %>
 
-  <br />
-  <% @post.sections.each do |section| %>
-      <%= section.body.to_s%>
-    <%# <%= render partial: "sections/attachable", locals: { section: section } %>
-  <% end %>
+    <br />
+
+    <% @post.sections.each do |section| %>
+        <%= section.body.to_s%>
+      <%# <%= render partial: "sections/attachable", locals: { section: section } %>
+    <% end %>
   </div>
   
 <% end %>

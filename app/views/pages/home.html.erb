@@ -1,4 +1,4 @@
-<%# app/views/pages/index.html.erb %>
+<%# app/views/pages/home.html.erb %>
 <!-- This is the content of the home page -->
 <!-- It will be rendered inside the layout -->
 <!-- app/views/layouts/application.html.erb -->
@@ -6,22 +6,24 @@
 <!-- app/views/layouts/application.html.erb -->
 
 <div class="main">
-    <div class="container <%= "home" unless @category  %>">
+    <div class="container <%= "home" unless @category %>">
 
-        <% unless @category %>
+        <% unless @category %> 
             <div class="banner">
-                banner
+                <%= content_tag(:canvas, "", data: { controller: "threejs" })%>
             </div>
         <% end %>
-        
-        <%= turbo_frame_tag "turbo_post", class: "content" do %>
-            
+
+        <%= turbo_frame_tag "main_content_frame", class: "content" do %>
             <%= render template: "posts/index" %>
-            
         <% end %>
 
-        <div class="sidebar">
-            sidebarasdfasdgasdgasdgasdgasdgasdgagsadadfsdfsadf
-        </div>
+        <%= turbo_frame_tag "main_sidebar_frame" do %>
+            <div class="sidebar">
+            <%= render "/pages/featured_post" %>
+            <%= render "/pages/popular_post" %>
+        <% end %>
     </div>
 </div>
+
+

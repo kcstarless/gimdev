@@ -10,4 +10,16 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :author, presence: true
   validates :difficulty, inclusion: { in: %w[Beginner Intermediate Advanced] }
+
+  def increment_views
+    update(views_count: views_count + 1)
+  end
+
+  def self.popular_posts
+    Post.order(views_count: :desc).limit(5)
+  end
+
+  def self.featured_posts
+    Post.order(created_at: :desc).limit(1)
+  end
 end

@@ -1,0 +1,129 @@
+.post-index {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-l);
+    hr {
+        height: 1px;
+        background-color: rgb(230, 230, 230);
+    }
+}
+
+.post-index-item {
+    display: flex;
+    gap: var(--space-l);
+
+    .post-index-image {
+        max-width: 300px;
+        max-height: 200px;
+        transition: transform 0.3s ease;  /* Smooth transition for scale effect */
+        overflow: hidden;  /* Hide parts of the image that scale outside the container */
+        position: relative; /* Ensure positioning context */
+    }
+
+    .post-index-image img {
+        transition: transform 0.3s ease; /* Apply smooth transition to the image itself */
+        width: 100%; /* Ensure the image is responsive */
+        height: auto; /* Maintain aspect ratio */
+    }
+    
+
+}
+
+.post-index-item:hover {
+    cursor: pointer;
+    // filter: brightness(1.1);
+    // background-color: rgba(128, 128, 128, 0.158);
+    // border-bottom: solid 8px var(--color-primary-rotate);
+    
+    .post-index-image img {
+        // margin-right: 8px;
+        transform: scale(1.1); /* Zoom in by 10% on hover */
+        // border: solid 4px var(--color-primary-rotate);
+    }
+    .post-index-desc {
+        // margin-right: -8px;
+        
+    }
+
+    .title {
+        color: var(--color-primary-rotate);
+        text-decoration: underline;
+    }
+}
+
+
+.post-index-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .title {
+        color: var(--color-text-body);
+        font-size: var(--font-size-xl);
+        font-weight: bold;
+    }
+    .desc {
+        
+        color: var(--color-text-muted);
+    }
+    .keyword-item {
+        font-size: var(--font-size-xxs);
+        background-color: green;
+    }
+    .created-by {
+        font-size: var(--font-size-xs);
+        color: rgba(128, 128, 128, 0.623);
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .post-index-item {
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+        gap: var(--space-l);
+    
+        .post-index-image {
+            max-width: 500px;
+            max-height: 200px;
+            transition: transform 0.3s ease;  /* Smooth transition for scale effect */
+            overflow: hidden;  /* Hide parts of the image that scale outside the container */
+            position: relative; /* Ensure positioning context */
+        }
+    
+        .post-index-image img {
+            transition: transform 0.3s ease; /* Apply smooth transition to the image itself */
+            width: 100%; /* Ensure the image is responsive */
+            height: auto; /* Maintain aspect ratio */
+        }
+        
+    
+    }
+    .post-index-desc {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        gap: 5px;
+    
+        .title {
+            color: var(--color-text-body);
+            font-size: var(--font-size-l);
+            font-weight: bold;
+        }
+        .desc {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+        }
+        .keyword-item {
+            font-size: var(--font-size-xxs);
+            background-color: green;
+        }
+        .created-by {
+            font-size: var(--font-size-xxs);
+            color: rgba(128, 128, 128, 0.623);
+        }
+    
+    }
+}

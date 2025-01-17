@@ -1,0 +1,94 @@
+
+.sidebar-box {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xxs);
+
+    border: var(--border-light);
+    padding: var(--space-m);
+    background-color: var(--color-white);
+
+    &.popular {
+        gap: var(--space-s);
+        .box-content {
+            border-left: solid 4px var(--color-primary-rotate);
+        }
+        .title {
+            padding-left: 20px;
+            font-size: var(--font-size-s);
+            overflow: hidden;
+        }
+        .created-by {
+            padding-left: 20px;
+        }
+        .box-content:hover {
+            background-color: rgba(128, 128, 128, 0.158);
+            cursor: pointer;
+        }
+    }
+
+
+    .box-title {
+        display: inline-flex;
+        justify-content: space-between;
+        font-weight: bold;
+        color: var(--color-text-body);
+        // border: solid 1px black;
+    }
+    
+    .box-content {
+        display: flex;
+        flex-direction: column;
+        // gap: var(--space-xxxs);
+    
+        .popular {
+    
+        }
+    
+        .cover-image-thumb {
+            transition: transform 0.3s ease;  /* Smooth transition for scale effect */
+            overflow: hidden;  /* Hide parts of the image that scale outside the container */
+            position: relative; /* Ensure positioning context */
+        }
+        .cover-image-thumb img {
+            transition: transform 0.3s ease; /* Apply smooth transition to the image itself */
+            width: 100%; /* Ensure the image is responsive */
+            height: auto; /* Maintain aspect ratio */
+        }
+        
+        .title {
+            color: var(--color-primary-rotate);
+        }
+        .description {
+            color: var(--color-text-header);
+            font-size: var(--font-size-xs);
+
+        }
+        .created-by {
+            font-size: var(--font-size-xs);
+            gap: var(--space-xxs);
+        
+            .author {
+                gap: var(--space-xxs);
+            }
+            .created {
+                gap: var(--space-xxs);
+            }
+        
+            .svg {
+                width: 15px;
+                height: 15px;
+            }
+    
+        }
+    }
+
+    .box-content:hover {
+        filter: brightness(1.1);
+
+        .cover-image-thumb img {
+            transform: scale(1.1); /* Zoom in by 10% on hover */
+            cursor: pointer;
+        }
+    }
+}

@@ -19,7 +19,7 @@
         </nav>
 
         <div class="create-button-container">
-            <%= link_to "+", new_post_path, class: "btn btn-create-post" %>
+            <%= link_to "+", new_post_path, class: "btn btn-create-post",  data: { turbo_frame: "main_content_frame" } %>
         </div>
         
 
