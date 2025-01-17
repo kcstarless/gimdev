@@ -1,11 +1,9 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  title: MyString
-  body: MyText
-  author: one
+  title: "My First Post"
+  description: "Description for the first post"
+  author: one  # references the 'one' author in authors.yml
 
 two:
-  title: MyString
-  body: MyText
-  author: two
+  title: "My Second Post"
+  description: "Description for the second post"
+  author: two  # references the 'two' author in authors.yml

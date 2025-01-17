@@ -1,7 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  body: MyText
+  post: <%= Post.first.id %>
+  body: |
+    <div>This is the first section's rich body content</div>
 
 two:
-  body: MyText
+  post: <%= Post.second.id %>
+  body: |
+    <div>This is the second section's rich body content</div>
