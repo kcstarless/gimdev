@@ -15,3 +15,6 @@ application.register('post-section', RailsNestedForm)
 
 import NavBarController from "./navbar_controller"
 application.register('navbar', NavBarController)
+
+import threejs_controller from "./threejs_controller"
+application.register('threejs', threejs_controller)

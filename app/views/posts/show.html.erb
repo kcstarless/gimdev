@@ -5,9 +5,13 @@
 <%= turbo_frame_tag "main_content_frame" do %>
   <div class="post-navi">
     <%= render "layouts/breadcrumb", category: @category  %>
+
     <div style="display: inline-flex; align-items: center;">
       <%= image_tag("edit.svg", class: "svg") %>
       <%= link_to "Edit", edit_post_path(@post), class: "btn edit" %>
+      <%= image_tag("delete.svg", class: "svg") %>
+      <%= link_to "Delete", post_path(@post, category: @category), method: :delete, data: { turbo_confirm: 'Are you sure?', turbo_method: "delete" }, class: "btn delete" %>
+
     </div>
   </div>
 

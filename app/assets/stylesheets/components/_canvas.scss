@@ -1,0 +1,34 @@
+.canvas-container {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Or any required height */
+    border: 1px solid #000; /* Optional: Add a border to see the container boundaries */
+    // background-color: rgba(44, 44, 212, 0.199);    
+}
+
+
+.canvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    // display: block;
+    // color: white;
+    // background-color: black;
+
+}
+
+
+canvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    // display: block;
+    // color: white;
+    // background-color: black;
+
+}
+

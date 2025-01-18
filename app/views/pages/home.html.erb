@@ -10,7 +10,9 @@
 
         <% unless @category %> 
             <div class="banner">
-                <%= content_tag(:canvas, "", data: { controller: "threejs" })%>
+                <div class="canvas-container">
+                    <%= content_tag(:div, "hello", data: { controller: "threejs", threejs_target: "canvas"}, class: "canvas") %>
+                </div>
             </div>
         <% end %>
 
@@ -20,10 +22,10 @@
 
         <%= turbo_frame_tag "main_sidebar_frame" do %>
             <div class="sidebar">
-            <%= render "/pages/featured_post" %>
-            <%= render "/pages/popular_post" %>
+                <%= render "/pages/featured_post" %>
+                <%= render "/pages/popular_post" %>
+            </div>
         <% end %>
-    </div>
 </div>
 
 

@@ -47,6 +47,20 @@
     &.btn-secondary:hover {
         filter: brightness(1.1);
     }
+
+    &.back {
+        color: var(--color-primary-rotate);
+        font-size: var(--font-size-s);
+    }
+    &.edit {
+        color: var(--color-primary-rotate);
+        font-size: var(--font-size-s);
+        padding-right: var(--space-m);
+    }
+    &.delete {
+        color: var(--color-primary-rotate);
+        font-size: var(--font-size-s);
+    }
 }
 
 

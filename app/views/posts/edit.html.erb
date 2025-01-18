@@ -9,8 +9,6 @@
     </div>
     <hr>
     <br />
-    <%= turbo_frame_tag @post do %>
-      <%= render "form", post: @post %>
-    <% end %>
+    <%= render "form", post: @post %>
   </div>
 <% end %>

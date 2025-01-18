@@ -5,11 +5,11 @@ import axios from "axios"
 export default class extends Controller {
   static targets = ["input", "suggestions", "keywordsList", "hiddenKeywords"];
 
-  keywords = [];
-
   connect() {
-    console.log("KeywordsController connected")
+    console.log("KeywordsController connected");
     console.log(this.keywordsListTarget);
+    this.keywords = this.hiddenKeywordsTarget.value.split(",").map(keyword => keyword.trim()).filter(keyword => keyword.length > 0);
+    this.keywords.forEach(keyword => this.addKeywordToList(keyword));
   }
 
   // Search for keywords as the user types

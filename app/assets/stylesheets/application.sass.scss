@@ -18,8 +18,7 @@
 @use "./components/breadcrumb";
 @use "./components/turbo_progress_bar";
 @use "./components/post_index";
-@use "./components/tagcloud";
-
+@use "./components/canvas";
 // Import external resources (Google Fonts) 
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap'); // Poppins
 
