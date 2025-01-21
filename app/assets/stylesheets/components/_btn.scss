@@ -61,6 +61,16 @@
         color: var(--color-primary-rotate);
         font-size: var(--font-size-s);
     }
+    &.login {
+        color: white;
+        font-weight: bold;
+        background-color: var(--color-primary-rotate);
+    }
+    &.forgot {
+        padding-top: var(--space-s);
+        font-size: var(--font-size-xxs);
+        color: var(--color-primary-rotate);
+    }
 }
 
 

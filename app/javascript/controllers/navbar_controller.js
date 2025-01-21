@@ -7,4 +7,10 @@ export default class extends Controller {
   toggleMenu() {
     this.navLinksTarget.classList.toggle("active");
   }
+
+  // navigate(event) {
+  //   event.preventDefault();
+  //   const url = event.currentTarget.getAttribute("href");
+  //   Turbo.visit(url, { action: "advance" });
+  // }
 }

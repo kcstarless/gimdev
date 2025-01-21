@@ -1,0 +1,9 @@
+<%= turbo_stream.replace "login_buttons" do %>
+  <div id="login_buttons">
+    <%= link_to new_session_path, class: "btn btn-primary", data: { turbo_frame: "login_frame" } do %>
+      <%= image_tag("login.svg", alt: "Login") %>
+    <% end %>
+    <%= turbo_frame_tag "login_frame" do %>
+    <% end %>
+  </div>
+<% end %>

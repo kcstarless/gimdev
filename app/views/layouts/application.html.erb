@@ -23,15 +23,24 @@
   </head>
 
   <body>
+    
+    <div id="overlay" class="overlay" data-action="click->login-dialog#toggleDialog"></div>
+
     <% if flash[:notice] %>
       <div class="notice"><%= flash[:notice] %></div>
     <% end %>
-
     <% if flash[:alert] %>
       <div class="alert"><%= flash[:alert] %></div>
     <% end %>
-
     <%= render partial: "layouts/header" %>
-    <%= yield %>
+
+    <div class="content">
+      <%= yield %>
+      <div class="content-sidebar">
+        <%= render "/pages/featured_post" %>
+        <%= render "/pages/popular_post" %>
+      </div>
+    </div>
+
   </body>
 </html>

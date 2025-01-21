@@ -1,6 +1,7 @@
 <%# Navigation bar %>
 
 <header class="header" data-controller="navbar">
+    
     <div class="header-container">
         <!-- Hamburger Icon for small screens -->
         <div class="hamburger" data-target="navbar.hamburger" data-action="click->navbar#toggleMenu">
@@ -19,22 +20,29 @@
         </nav>
 
         <div class="create-button-container">
-            <%= link_to "+", new_post_path, class: "btn btn-create-post",  data: { turbo_frame: "main_content_frame" } %>
+            <%= link_to "+", new_post_path, class: "btn btn-create-post",  data: { turbo_frame: "main_content_frame", tooltip: "Create Post"  } %>
         </div>
         
 
         <div class="logins">
+            
             <button class="btn btn-primary"><%= image_tag("search.svg") %></button>
-            <% if authenticated? %>
-                <%= button_to session_path, class: "btn btn-primary", method: :delete, data: { tooltip: "Log out" } do %>
-                    <%= image_tag("logout.svg", alt: "Log out") %>
+            <div id="login_buttons" data-controller="login-dialog">
+                <% if authenticated? %>
+                    <%= button_to session_path, class: "btn btn-primary", method: :delete, data: { tooltip: "Logout" } do %>
+                        <%= image_tag("logout.svg", alt: "Log out") %>
+                    <% end %>
+                <% else %>
+                    <%= link_to new_session_path, class: "btn btn-primary", data: { turbo_frame: "login_frame" } do %>
+                        <%= image_tag("login.svg", alt: "Login") %>
+                    <% end %>
                 <% end %>
-            <% end %>
-            <% unless authenticated? %>
-                <%= button_to new_session_path, class: "btn btn-primary", data: { tooltip: "Login" } do %>
-                    <%= image_tag("login.svg", alt: "Login") %>
-                <% end %>
-            <% end %>   
+                <%= turbo_frame_tag "login_frame" do %>
+                <% end %>  
+            </div>
+ 
         </div>
+
     </div>
+
 </header>

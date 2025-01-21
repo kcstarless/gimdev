@@ -6,7 +6,6 @@ class PagesController < ApplicationController
       #   @post = Post.find(params[:id])
       # end
       # Check if category param is provided in the URL
-      Rails.logger.debug "Allow unauthenticated access is filtering the request"
       if params[:category].present?
         # Find the category by name
         @category = Category.find_by(name: params[:category])

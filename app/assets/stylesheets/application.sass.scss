@@ -4,6 +4,7 @@
 @use "resets";      
 
 // Layout
+@use "./layout/body";
 @use "./layout/content";
 @use "./layout/header";
 @use "./layout/footer";
@@ -19,6 +20,8 @@
 @use "./components/turbo_progress_bar";
 @use "./components/post_index";
 @use "./components/canvas";
+@use "./components/login_dialog";
+
 // Import external resources (Google Fonts) 
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap'); // Poppins
 

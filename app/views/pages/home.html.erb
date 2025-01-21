@@ -4,28 +4,15 @@
 <!-- app/views/layouts/application.html.erb -->
 <!-- The layout will be rendered inside the application layout -->
 <!-- app/views/layouts/application.html.erb -->
+<%= turbo_frame_tag "main_content_frame", class: "content-main", data: { turbo_action: "advance" } do %>
+    <% unless (@category || request.path == new_post_path) %> 
+        <div class="content-main-banner">
+            <%= content_tag(:div, "", data: { controller: "threejs", threejs_target: "canvas"}, class: "canvas") %>
+        </div>
+    <% end %>
+    
+    <%= render template: "posts/index" %>
+<% end %>
 
-<div class="main">
-    <div class="container <%= "home" unless @category %>">
-
-        <% unless @category %> 
-            <div class="banner">
-                <div class="canvas-container">
-                    <%= content_tag(:div, "hello", data: { controller: "threejs", threejs_target: "canvas"}, class: "canvas") %>
-                </div>
-            </div>
-        <% end %>
-
-        <%= turbo_frame_tag "main_content_frame", class: "content" do %>
-            <%= render template: "posts/index" %>
-        <% end %>
-
-        <%= turbo_frame_tag "main_sidebar_frame" do %>
-            <div class="sidebar">
-                <%= render "/pages/featured_post" %>
-                <%= render "/pages/popular_post" %>
-            </div>
-        <% end %>
-</div>
 
 

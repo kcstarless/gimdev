@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "pages#home"
 
   # Authentication routes for User model
-  resource :session
+  resource :session, only: [ :new, :create, :destroy ]
   resources :passwords, param: :token
 
   # Keyword search

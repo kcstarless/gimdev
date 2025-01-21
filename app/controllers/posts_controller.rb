@@ -1,13 +1,23 @@
 class PostsController < ApplicationController
-  before_action :authenticated?, except: [ :index, :show ]
+  allow_unauthenticated_access only: [ :index, :show, :new, :create ]
   before_action :set_post, only: [ :show, :edit, :update, :destroy ]
   before_action :increment_views, only: [ :show ]
 
   def index
-    @category = Category.find_by(name: params[:category])
-    if @category
-      @posts = @category.posts
+    if params[:category].present?
+      # Find the category by name
+      @category = Category.find_by(name: params[:category])
+
+      if @category
+        # Get all posts associated with this category
+        @posts = @category.posts
+      else
+        # If the category doesn't exist, show a message and display all posts
+        flash[:alert] = "Category not found"
+        @posts = Post.order(created_at: :asc)
+      end
     else
+      # If no category is provided, show all posts
       @posts = Post.order(created_at: :asc)
     end
   end

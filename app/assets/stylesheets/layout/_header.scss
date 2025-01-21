@@ -1,10 +1,11 @@
 @use '../mixins' as *;
 
-header {
-    width: 100%;
-    background-color: hsl(217, 22%, 12%);
-    margin: 0 auto;
-}
+// header {
+//     width: 100%;
+//     background-color: hsl(217, 22%, 12%);
+//     margin: 0 auto;
+// }
+
 
 header .header-container {
     display: flex;
@@ -17,18 +18,22 @@ header .header-container {
     margin: 0 auto;
     gap: 30px;
 
+    position: relative;
     .logo {
         color: var(--color-text-white); 
     }
 
     .logins {
-        display: flex;
+        display: inline-flex;
         margin-left: auto; 
         gap: var(--space-m);
-        z-index: 2;
         .btn {
             vertical-align: middle;
         }
+        img {
+            // border: solid 1px white;
+        }
+
     }
 
     a {
@@ -40,6 +45,8 @@ header .header-container {
         color: var(--color-primary-rotate);
     }
 }
+
+
 
 nav {
     display: flex;

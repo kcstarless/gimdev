@@ -10,11 +10,11 @@ application.register("image-preview", ImagePreviewController)
 import KeywordsController from "./keywords_controller"
 application.register("keywords", KeywordsController)
 
-import RailsNestedForm from '@stimulus-components/rails-nested-form'
-application.register('post-section', RailsNestedForm)
+import LoginDialogController from "./login_dialog_controller"
+application.register("login-dialog", LoginDialogController)
 
-import NavBarController from "./navbar_controller"
-application.register('navbar', NavBarController)
+import NavbarController from "./navbar_controller"
+application.register("navbar", NavbarController)
 
-import threejs_controller from "./threejs_controller"
-application.register('threejs', threejs_controller)
+import ThreejsController from "./threejs_controller"
+application.register("threejs", ThreejsController)
