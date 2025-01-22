@@ -15,7 +15,7 @@
             <%= form.text_field :description, placeholder: "Post short description..." %>
         </div>
 
-        <%= render "image_preview", form: form, post: post %>
+        <%= render "posts/image_preview", form: form, post: post %>
     </fieldset>
     
     <fieldset>  <%# Categories, Keywords, difficulties %>
@@ -35,7 +35,7 @@
                 <%= form.label :difficulty %>
                 <%= form.select :difficulty, options_for_select(['Beginner', 'Intermediate', 'Advanced'], post.difficulty || 'easy') %>
             </div>
-            
+
             <div data-keywords-target="keywordsContainer" class="field keyword">
                 <div class="keyword-wrapper">
                     <input type="text" id="keyword-input"
@@ -74,13 +74,13 @@
         <%# Template for rendering a new section form (used for dynamic form addition) %>
         <template data-post-section-target="template">
             <%= form.fields_for :sections, Section.new, child_index: "NEW_RECORD" do |section_fields| %>
-                <%= render "post_section_form", f: section_fields %>
+                <%= render "posts/post_section_form", f: section_fields %>
             <% end %>
         </template>
 
         <%# Render existing sections forms (for already saved sections associated with the post) %>
         <%= form.fields_for :sections do |section_fields| %>
-            <%= render "post_section_form", f: section_fields %>
+            <%= render "posts/post_section_form", f: section_fields %>
         <% end %>
 
         <%# Target container for dynamically added section forms %>

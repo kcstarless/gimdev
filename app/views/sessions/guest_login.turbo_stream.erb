@@ -1,9 +1,0 @@
-<!-- app/views/sessions/guest_login_redirect.turbo_stream.erb -->
-<%= turbo_stream.replace "login_buttons" do %>
-  <div id="login_buttons">
-    <%= button_to session_path, class: "btn btn-primary", method: :delete, data: { tooltip: "Logout" } do %>
-      <%= image_tag("logout.svg", alt: "Log out") %>
-    <% end %>
-  </div>
-<% end %>
-

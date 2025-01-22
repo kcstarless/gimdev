@@ -1,0 +1,14 @@
+<div id="login_buttons" data-controller="login-dialog">
+    <% if authenticated? %>
+        <%= button_to session_path, class: "btn btn-primary", method: :delete, data: { tooltip: "Logout" } do %>
+            <%= image_tag("logout.svg", alt: "Log out") %>
+        <% end %>
+    <% else %>
+        <%= link_to new_session_path, class: "btn btn-primary", data: { turbo_frame: "login_frame" } do %>
+            <%= image_tag("login.svg", alt: "Login") %>
+        <% end %>
+    <% end %>
+    
+    <%= turbo_frame_tag "login_frame" do %>
+    <% end %>  
+</div>

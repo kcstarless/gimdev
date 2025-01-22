@@ -15,9 +15,11 @@
     "@stimulus-components/dialog": "^1.0.1",
     "@stimulus-components/rails-nested-form": "^5.0.0",
     "axios": "^1.7.9",
+    "nprogress": "^0.2.0",
     "sass": "^1.83.0",
     "stimulus": "^3.2.2",
     "three": "^0.172.0",
     "trix": "^2.1.12"
-  }
+  },
+  "packageManager": "yarn@1.22.22"
 }

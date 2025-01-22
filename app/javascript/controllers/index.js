@@ -24,3 +24,6 @@ application.register('post-section', RailsNestedForm)
 
 import Dialog from "@stimulus-components/dialog"
 application.register("dialog", Dialog)
+
+import LoadingBarController from "./loading_bar_controller"
+application.register("loading-bar", LoadingBarController)
