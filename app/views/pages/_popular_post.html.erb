@@ -6,7 +6,10 @@
     </div>
     
     <hr>
-
+    <% if Post.popular_posts.empty? %>
+                No popular post
+    <% end %>
+    
     <% Post.popular_posts.each do |post| %>
        <%= link_to post_path(post), data: { turbo_frame: "main_content_frame" } do %>
             <div class="box-content">

@@ -35,6 +35,7 @@
                 <%= form.label :difficulty %>
                 <%= form.select :difficulty, options_for_select(['Beginner', 'Intermediate', 'Advanced'], post.difficulty || 'easy') %>
             </div>
+            
             <div data-keywords-target="keywordsContainer" class="field keyword">
                 <div class="keyword-wrapper">
                     <input type="text" id="keyword-input"

@@ -18,3 +18,9 @@ application.register("navbar", NavbarController)
 
 import ThreejsController from "./threejs_controller"
 application.register("threejs", ThreejsController)
+
+import RailsNestedForm from '@stimulus-components/rails-nested-form' 
+application.register('post-section', RailsNestedForm)
+
+import Dialog from "@stimulus-components/dialog"
+application.register("dialog", Dialog)

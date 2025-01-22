@@ -1,16 +1,38 @@
 <%# /views/posts/new.html.erb %>
 <%# New post form, targets turbo_post frame.  %>
+
 <%= turbo_frame_tag "main_content_frame" do %> 
-<div class="form-container">
-        <div class="post-navi">
-                <h3>New Post</h3>
-                <div style="display: inline-flex; align-items: center;">
-                        <%= image_tag("back.svg", class: "svg") %>
-                        <%= link_to sanitize("Back to posts"), posts_path, class: "btn back" %>
+        <% if authenticated? %>
+                <div class="form-container">
+                        <div class="post-navi">
+                                <h3>New Post</h3>
+                                <div style="display: inline-flex; align-items: center;">
+                                        <%= image_tag("back.svg", class: "svg") %>
+                                        <%= link_to sanitize("Back to Home"), root_path, class: "btn back" %>
+                                </div>
+                        </div>
+                        <hr>
+                        <br />
+                        <%= render "form", post: @post %>
                 </div>
-        </div>
-        <hr>
-        <br />
-        <%= render "form", post: @post %>
-</div>
+        <% else %>
+                <div class="form-container">
+                        <div class="post-navi">
+                                <h3>Sign in Required</h3>
+                                <div style="display: inline-flex; align-items: center;">
+                                        <%= image_tag("back.svg", class: "svg") %>
+                                        <%= link_to sanitize("Back to Home"), root_path, class: "btn back" %>
+                                </div>
+                        </div>
+                        <hr>
+                        <br />
+                        <div class="alert alert-danger" role="alert">
+                                <p>You must be logged in to create a post.</p>
+                                <p>Please use Guest account if you do not have an account.</p>
+                                <p>Would you like to login as a guest? 
+                                        <%= button_to "Yes, Login as Guest", guest_login_path, method: :post, class: "btn btn-secondary" %></p>
+                        </div>
+                </div>
+        <% end %>
 <% end %>
+

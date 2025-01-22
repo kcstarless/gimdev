@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  allow_unauthenticated_access only: [ :index, :show, :new, :create ]
+  allow_unauthenticated_access only: [ :index, :show, :new ]
   before_action :set_post, only: [ :show, :edit, :update, :destroy ]
   before_action :increment_views, only: [ :show ]
 
@@ -27,14 +27,20 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+      @post = Post.new
   end
 
   def edit
   end
 
   def create
-    @post = Current.user.posts.build(post_params)
+    if Current.user.nil?
+      guest_user = User.find_by(email_address: "guest@guest.com")
+      @post = guest_user.posts.build(post_params)
+    else
+      @post = Current.user.posts.build(post_params)
+    end
+
     if @post.save
       add_keywords_to_post(@post) # Adds keywords if post created
       add_sections_to_post(@post) # Adds sections if post created
