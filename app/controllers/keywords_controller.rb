@@ -6,7 +6,7 @@ class KeywordsController < ApplicationController
   # For autocomplete suggestions
   def search
     query = params[:query]
-    @keywords = Keyword.where("name ILIKE?", "%#{query}%").limit(5)
+    @keywords = Keyword.where(Keyword.arel_table[:name].matches("%#{query}%")).limit(5)
     render json: @keywords.pluck(:name)
   end
 
