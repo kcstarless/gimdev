@@ -1,12 +1,10 @@
 <!--  /views/posts/show.html.erb 
       renders a post, targets turbo_post frame
 -->
-
-<%= turbo_frame_tag "main_content_frame",  class: "content-main" do %>
-
-<div class="content-main-container">
+<%= turbo_frame_tag "main_content_frame", data: { turbo_action: "advance" } do %>
+  <div class="content-main-container">
     <div class="post-navi">
-      <%= render "layouts/breadcrumb", category: @category  %>
+      <%= render "layouts/breadcrumb", category: @category %>
 
       <% if authenticated? && (Current.user == @post.author) %>
         <div style="display: inline-flex; align-items: center;">
@@ -17,7 +15,7 @@
         </div>
       <% end %>
     </div>
-      
+
     <hr>
 
     <div class="post-header">
@@ -40,8 +38,7 @@
           <div class="keyword-item"><%= keyword.name %></div>
         <% end %>
       </div>
-    <div>
-
+    </div>
 
     <div class="post-main">
       <% if @post.cover_image.present? %>
@@ -53,12 +50,8 @@
       <br />
 
       <% @post.sections.each do |section| %>
-          <%= section.body.to_s%>
-        <%# <%= render partial: "sections/attachable", locals: { section: section } %>
+        <%= section.body.to_s %>
       <% end %>
     </div>
-    
-</div>
-
-
+  </div>
 <% end %>

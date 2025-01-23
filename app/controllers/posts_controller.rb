@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class PostsController  < ApplicationController
   allow_unauthenticated_access only: [ :index, :show, :new ]
   before_action :set_post, only: [ :show, :edit, :update, :destroy ]
   before_action :increment_views, only: [ :show ]
@@ -24,6 +24,13 @@ class PostsController < ApplicationController
 
   def show
     @category = params[:category] if params[:category].present?
+
+    # respond_to do |format|
+    #   format.html # Renders the show.html.erb template
+    #   format.turbo_stream do
+    #     render turbo_stream: turbo_stream.replace("post_content", template: "posts/show", locals: { post: @post })
+    #   end
+    # end
   end
 
   def new

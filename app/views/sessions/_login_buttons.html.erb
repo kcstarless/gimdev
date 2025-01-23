@@ -1,6 +1,6 @@
 <div id="login_buttons" data-controller="login-dialog">
     <% if authenticated? %>
-        <%= button_to session_path, class: "btn btn-primary", method: :delete, data: { tooltip: "Logout" } do %>
+        <%= button_to session_path, class: "btn btn-primary", method: :delete, data: { turbo: false, tooltip: "Logout" } do %>
             <%= image_tag("logout.svg", alt: "Log out") %>
         <% end %>
     <% else %>

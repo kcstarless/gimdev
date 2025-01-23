@@ -1,7 +1,8 @@
 <%# index for posts, targets turbo_post frame %>
-<%= turbo_frame_tag "main_content_frame", class: "content-main" do %>
-<div class="content-main-container">
+<%= turbo_frame_tag "main_content_frame" do %>
 
+<div class="content-main-container">
+    
 <div class="post-navi">
     <h3><%= @category.present? ? "#{@category.name.capitalize} Posts" : "Posts" %></h3>
 </div>
@@ -9,7 +10,7 @@
 
 <div class="post-index">
     <% @posts.each do |post| %>
-        <%= link_to post_path(post, category: @category&.name), data: { turbo_frame: "main_content_frame", turbo_action: :advance } do %>
+        <%= link_to post_path(post, category: @category&.name), data: { turbo_frame: "main_content_frame" } do %>
             <div class="post-index-item">
 
                 <div class="post-index-image">

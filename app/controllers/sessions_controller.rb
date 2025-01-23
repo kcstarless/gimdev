@@ -31,13 +31,14 @@ class SessionsController < ApplicationController
   def destroy
     terminate_session
     flash[:alert] = "Successfully logged out."
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      format.turbo_stream do
-        # Send a Turbo Stream that triggers a full-page reload
-        render turbo_stream: turbo_stream.append("main_content_frame", "<script>window.location.reload();</script>")
-      end
-    end
+    redirect_to root_path
+    # respond_to do |format|
+    #   format.html { redirect_to root_path }
+    #   format.turbo_stream do
+    #     # Send a Turbo Stream that triggers a full-page reload
+    #     render turbo_stream: turbo_stream.append("main_content_frame", "<script>window.location.reload();</script>")
+    #   end
+    # end
   end
 
   # Guest Login Action
