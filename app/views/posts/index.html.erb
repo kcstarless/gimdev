@@ -1,8 +1,7 @@
 <%# index for posts, targets turbo_post frame %>
-<%= turbo_frame_tag "main_content_frame" do %>
+<%= turbo_frame_tag "main_content_frame", class: "content-main" do %>
 
 <div class="content-main-container">
-    
 <div class="post-navi">
     <h3><%= @category.present? ? "#{@category.name.capitalize} Posts" : "Posts" %></h3>
 </div>

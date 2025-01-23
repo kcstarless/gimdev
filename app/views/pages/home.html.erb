@@ -5,14 +5,12 @@
 <!-- The layout will be rendered inside the application layout -->
 <!-- app/views/layouts/application.html.erb -->
 
-<% unless (@category || request.path == new_post_path) %> 
-    <div class="content-main-banner">
-        <%= content_tag(:div, "", data: { controller: "threejs", threejs_target: "canvas"}, class: "canvas") %>
-    </div>
+<%= turbo_frame_tag "main_content_frame", class: "content-main", data: { turbo_action: "advance" } do %>
+    <% unless (@category || request.path == new_post_path) %> 
+        <div class="content-main-banner">
+            <%= content_tag(:div, "", data: { controller: "threejs", threejs_target: "canvas"}, class: "canvas") %>
+        </div>
+    <% end %>
+
+    <%= render template: "posts/index" %>
 <% end %>
-
-<%= render template: "posts/index" %>
-
-
-
-

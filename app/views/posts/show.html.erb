@@ -1,7 +1,7 @@
 <!--  /views/posts/show.html.erb 
       renders a post, targets turbo_post frame
 -->
-<%= turbo_frame_tag "main_content_frame", data: { turbo_action: "advance" } do %>
+<%= turbo_frame_tag "main_content_frame", class: "content-main", data: { turbo_action: "advance" } do %>
   <div class="content-main-container">
     <div class="post-navi">
       <%= render "layouts/breadcrumb", category: @category %>

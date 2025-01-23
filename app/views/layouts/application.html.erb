@@ -34,11 +34,8 @@
     <%= render partial: "layouts/header" %>
 
     <div class="content">
-      <div class="content-main">
-        <%= turbo_frame_tag "main_content_frame", data: { turbo_action: "advance" } do %>
-          <%= yield %>
-        <% end %>
-      </div>
+      
+        <%= yield %>
       <div class="content-sidebar">
         <%= render "/pages/featured_post" %>
         <%= render "/pages/popular_post" %>

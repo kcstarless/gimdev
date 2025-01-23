@@ -2,7 +2,7 @@
   <div aria-label="breadcrumb">
     <ol class="breadcrumb">
       <!-- Home Link -->
-      <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+      <li class="breadcrumb-item"><%= link_to "Home", root_path, data: { turbo_frame: "main_content_frame" }  %></li>
       
       <!-- Posts Link -->
       <% if @category %>
