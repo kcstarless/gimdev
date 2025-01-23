@@ -1,6 +1,7 @@
 <%= turbo_frame_tag "login_frame" do  %>
 
 <dialog open class="login-dialog-box" data-controller="login-dialog"  data-login-dialog-target="loginDialog">
+  
     <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
     <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
 

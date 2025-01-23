@@ -8,8 +8,10 @@ export default class extends Controller {
   connect() {
     console.log("KeywordsController connected");
     console.log(this.keywordsListTarget);
-    this.keywords = this.hiddenKeywordsTarget.value.split(",").map(keyword => keyword.trim()).filter(keyword => keyword.length > 0) || [];
+    console.log("Data attribute value:", this.element.dataset.keywordsExistingKeywords);
+    this.keywords = JSON.parse(this.element.dataset.keywordsExistingKeywords || "[]");
     this.keywords.forEach(keyword => this.addKeywordToList(keyword));
+    this.updateHiddenField();
   }
 
   // Search for keywords as the user types

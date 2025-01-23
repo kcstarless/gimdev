@@ -3,7 +3,8 @@
 
 <%= form_with(model: post, class: "form",
     data: { controller: "post-section keywords",
-    post_section_wrapper_selector_value: '.post-section-wrapper'}) do |form| %>
+            post_section_wrapper_selector_value: '.post-section-wrapper',
+            keywords_existing_keywords: post.keywords.map(&:name).to_json}) do |form| %>
 
     <fieldset>
         <legend>Title & Description</legend>
@@ -52,7 +53,7 @@
                 <button type="button" class="btn btn-secondary" data-action="click->keywords#addKeyword">+ Add Keyword</button>
 
                 <!-- Hidden input to hold the selected keywords -->
-                <%= form.hidden_field :keywords, value: "", data: { keywords_target: "hiddenKeywords" } %>
+                <%= form.hidden_field :keywords, value: post.keywords.map(&:name).join(", "), data: { keywords_target: "hiddenKeywords" } %>
             </div>
             
 
@@ -60,12 +61,6 @@
         
         <div class="keywords-list" data-keywords-target="keywordsList">
                     <!-- Display added keywords here -->
-            <% if post.keywords.any? %>
-                <% post.keywords.each do |keyword| %>
-                    <div class="keyword-item" data-action="click->keywords#removeKeyword"><%= keyword.name %></div>
-                <% end%>
-            <% end %>
-
         </div>
     </fieldset>
 

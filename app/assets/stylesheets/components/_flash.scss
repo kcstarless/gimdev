@@ -1,0 +1,28 @@
+.flash {
+    position: fixed;
+    left: 0;
+    // top: 60px;
+    height: 70px;
+    background-color: var(--color-primary-rotate);
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: var(--color-white);
+    animation: fadeOut 3s forwards; /* Apply the fade-out animation */
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1; /* Fully visible at the start */
+  }
+  90% {
+    opacity: 1; /* Stay visible for most of the animation */
+  }
+  100% {
+    opacity: 0; /* Fully transparent at the end */
+    display: none; /* Hide the element after the animation */
+  }
+}

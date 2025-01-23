@@ -26,11 +26,9 @@
     
     <div id="overlay" class="overlay" data-action="click->login-dialog#toggleDialog"></div>
 
-    <% if flash[:notice] %>
-      <div class="notice"><%= flash[:notice] %></div>
-    <% end %>
-    <% if flash[:alert] %>
-      <div class="alert"><%= flash[:alert] %></div>
+    <!-- Global flash message area -->
+    <%= turbo_frame_tag "global_flash_messages" do %>
+      <%= render "shared/flash_messages" %>
     <% end %>
     
     <%= render partial: "layouts/header" %>

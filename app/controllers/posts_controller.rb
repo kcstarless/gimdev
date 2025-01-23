@@ -44,8 +44,21 @@ class PostsController < ApplicationController
     if @post.save
       add_keywords_to_post(@post) # Adds keywords if post created
       add_sections_to_post(@post) # Adds sections if post created
-      redirect_to post_path(@post)
+      flash.now[:alert] = "Post successfully created."
+      respond_to do |format|
+        format.html do
+          redirect_to post_path(@post), notice: "Post was successfully created."
+        end
+        format.turbo_stream do
+          # Render a Turbo Stream response that updates both frames
+          render turbo_stream: [
+            turbo_stream.replace("main_content_frame", template: "posts/show"),
+            turbo_stream.replace("global_flash_messages", partial: "shared/flash_messages")
+          ]
+        end
+      end
     else
+      flash.now[:alert] = "Post could not be created. Please check the errors below."
       render :new
     end
   end
@@ -54,7 +67,19 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       add_keywords_to_post(@post) # Updates keywords if necessary
       add_sections_to_post(@post) # Updates sections if necessary
-      redirect_to post_path(@post), notice: "Post was successfully updated."
+      flash.now[:alert] = "Post successfully updated."
+      respond_to do |format|
+        format.html do
+          redirect_to post_path(@post), notice: "Post was successfully created."
+        end
+        format.turbo_stream do
+          # Render a Turbo Stream response that updates both frames
+          render turbo_stream: [
+            turbo_stream.replace("main_content_frame", template: "posts/show"),
+            turbo_stream.replace("global_flash_messages", partial: "shared/flash_messages")
+          ]
+        end
+      end
     else
       render :edit
     end

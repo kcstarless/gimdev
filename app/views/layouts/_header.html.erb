@@ -26,7 +26,7 @@
 
         <div class="logins">  
             <button class="btn btn-primary"><%= image_tag("search.svg") %></button>
-            <%= turbo_frame_tag "login_buttons" do %>
+            <%= turbo_frame_tag "login_buttons_frame" do %>
                 <%= render "sessions/login_buttons" %>
             <% end %>
         </div>
