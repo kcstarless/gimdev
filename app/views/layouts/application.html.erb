@@ -24,7 +24,7 @@
 
   <body data-controller="loading-bar">
     
-    <div id="overlay" class="overlay" data-action="click->login-dialog#toggleDialog"></div>
+    <%# <div id="overlay" class="overlay" data-action="click->login-dialog#toggleDialog"></div> %>
 
     <!-- Global flash message area -->
     <%= turbo_frame_tag "global_flash_messages" do %>
@@ -34,13 +34,15 @@
     <%= render partial: "layouts/header" %>
 
     <div class="content">
-      
         <%= yield %>
-      <div class="content-sidebar">
-        <%= render "/pages/featured_post" %>
-        <%= render "/pages/popular_post" %>
-      </div>
+        <div class="content-sidebar">
+          <%= render "/pages/featured_post" %>
+          <%= render "/pages/popular_post" %>
+        </div>
     </div>
+    <footer>
+      <%= render partial: "layouts/footer"%>
+    </footer>
 
   </body>
 </html>

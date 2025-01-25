@@ -22,7 +22,7 @@ export default class extends Controller {
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(this.canvasTarget.clientWidth, this.canvasTarget.clientHeight);
-    this.renderer.setClearColor(0xff0000, 1);
+    this.renderer.setClearColor('#FFD166', 1);
     this.canvasTarget.appendChild(this.renderer.domElement);
 
     this.geometry = new THREE.BoxGeometry();

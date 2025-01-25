@@ -1,1 +1,14 @@
 @use '../mixins' as *;
+
+.footer-info {
+    h3 {
+        color: #e0e8ff;
+    }
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    width: 100px;
+}
