@@ -8,7 +8,9 @@
             <%= image_tag("menu.svg", alt: "Menu") %> <!-- Replace with your hamburger icon -->
         </div>
         <div class="logo">
-            <%= image_tag("logo.svg") %>
+            <%= link_to root_path, class: "logo" do %>
+                <%= image_tag("logo.svg") %>
+            <% end %>
         </div>
         
         <nav class="nav-link" data-navbar-target="navLinks">

@@ -3,7 +3,7 @@
 -->
 <%= turbo_frame_tag "main_content_frame", class: "content-main", data: { turbo_action: "advance" } do %>
   <div class="content-main-container">
-    <div class="post-navi">
+    <div class="content-header">
       <%= render "layouts/breadcrumb", category: @category %>
 
       <% if authenticated? && (Current.user == @post.author) %>
@@ -19,8 +19,14 @@
     <hr>
 
     <div class="post-header">
-      <h1><%= @post.title %></h1>
-      <div><%= @post.description %></div>
+      <div class="title"><%= @post.title %></div>
+      <div class="desc"><%= @post.description %></div>
+
+      <div>
+        <% @post.keywords.each do |keyword| %>
+          <div class="keyword-item"><%= keyword.name %></div>
+        <% end %>
+      </div>
 
       <div class="created-by">
         <div class="author">
@@ -31,13 +37,15 @@
           <%= image_tag("created.svg", class: "svg") %>
           <%= @post.created_at.strftime("%A, %d %B %y") %>
         </div>
+
+        <div class="share">
+          <%= link_to "#", class: "btn share" do %>
+            <%= image_tag("share.svg", class: "svg") %>
+          <% end %>
+        </div>
       </div>
 
-      <div>
-        <% @post.keywords.each do |keyword| %>
-          <div class="keyword-item"><%= keyword.name %></div>
-        <% end %>
-      </div>
+
     </div>
 
     <div class="post-main">

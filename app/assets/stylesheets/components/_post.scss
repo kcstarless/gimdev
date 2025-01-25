@@ -3,21 +3,19 @@
     padding: 20px;
 }
 
-.post-navi {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .svg {
-        // margin-top: -5px;
-        padding-right: 5px;
-    }
-}
-
 .post-header {
     display: flex;
     flex-direction: column;
-    gap: var(--space-l);
+    gap: var(--space-s);
+    
+    .title {
+        font-family: 'Paytone One', cursive;
+        font-size: var(--font-size-xxxl);
+    }
+    
+    .desc {
+        font-size: var(--font-size-l);
+    }
 }
 
 .created-by {
@@ -40,6 +38,12 @@
     .svg {
         width: 20px;
         height: 20px;
+    }
+
+    .share {
+        display: inline-flex;;
+        justify-content: space-between;
+        color: red;
     }
 }
 

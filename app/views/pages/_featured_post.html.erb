@@ -1,12 +1,13 @@
 <% post = Post.featured_posts.first %>
 
 <div class="sidebar-box">
-    <div class="box-title">
-        <div>Featured Post</div>
-        <%= image_tag("featured.svg", class: "svg") %>
+    <div class="content-header">
+        <h3>Featured</h3>
+        <div><%= image_tag("featured.svg", class: "svg") %></div>
     </div>
     
     <hr>
+    
     <% if post.present? %>
         <%= link_to post_path(post), data: { turbo_frame: "main_content_frame" } do %>
         <div class="box-content">

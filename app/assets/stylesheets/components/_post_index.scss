@@ -20,6 +20,7 @@
         overflow: hidden;  /* Hide parts of the image that scale outside the container */
         position: relative; /* Ensure positioning context */
         margin-right: 5px;
+        border-radius: var(--border-radius);
     }
 
     .post-index-image img {
@@ -63,13 +64,15 @@
     justify-content: space-evenly;
 
     .title {
-        color: var(--color-tertiary);
+        font-family: 'Paytone One', sans-serif;
+        letter-spacing: 1px;
+        color: var(--color-text-body);
         font-size: var(--font-size-xl);
-        font-weight: bold;
+        // font-weight: bold;
     }
     .desc {
-        
-        color: var(--color-text-muted);
+        // font-family: 'Paytone One', sans-serif;
+        color: var(--color-text-body);
     }
     .keyword-item {
         font-size: var(--font-size-xxs);
@@ -77,11 +80,8 @@
     }
     .created-by {
         font-size: var(--font-size-xs);
-        color: var(--color-text-muted)
-    }
-    .desc {
-        font-size: var(--font-size-s);
-        color: var(--color-text-muted);
+        // color: var(--color-text-body);
+        font-weight: bold;
     }
 
 }

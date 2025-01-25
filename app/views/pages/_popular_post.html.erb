@@ -1,11 +1,12 @@
 
 <div class="sidebar-box popular">
-    <div class="box-title">
-        <div>Popular Posts</div>
+    <div class="content-header">
+        <h3>Popular</h3>
         <%= image_tag("trending.svg", class: "svg") %>
     </div>
     
     <hr>
+
     <% if Post.popular_posts.empty? %>
                 No popular post
     <% end %>
@@ -15,12 +16,6 @@
             <div class="box-content">
                 <div class="title">
                     <%= post.title %>
-                </div>
-                <div class="created-by">
-                    <div class="created">
-                        <%= image_tag("created.svg", class: "svg") %>
-                        <%= post.created_at.strftime("%A, %d %B %y") %>
-                    </div>
                 </div>
             </div>
         <% end %>

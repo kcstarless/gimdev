@@ -1,7 +1,6 @@
 :root {
     // Simple fonts
-    --font-family-sans: 'Poppins', 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
+    --font-family-sans: 'Poppins', 'Paytone One', 'Rampart One', 'Nova Mono', 'Rammetto One', 'Righteous', 'Monofett', 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     // Classical line heights
     --line-height-headers: 1.1;
     --line-height-body:    1.5;
@@ -39,7 +38,7 @@
 
     // Application colors
     --color-primary:          hsl(350, 67%, 50%);
-    --color-primary-rotate:   hsl(10, 73%, 54%);
+    --color-primary-rotate:   rgb(223, 81, 52);
     --color-secondary:        rgb(247, 238, 199);
     --color-secondary-rotate: hsl(120, 45%, 56%);
     --color-tertiary:         hsl(217, 22%, 12%);

@@ -1,54 +1,25 @@
 
 .sidebar-box {
+    // position: sticky;
     display: flex;
     flex-direction: column;
-    gap: var(--space-xxs);
 
     border: var(--border-light);
-    padding: var(--space-m);
+    padding: var(--space-l);
     background-color: var(--color-white);
-
-    &.popular {
-        gap: var(--space-s);
-        .box-content {
-            border-left: solid 4px var(--color-primary-rotate);
-        }
-        .title {
-            padding-left: 20px;
-            font-size: var(--font-size-s);
-            overflow: hidden;
-        }
-        .created-by {
-            padding-left: 20px;
-        }
-        .box-content:hover {
-            background-color: rgba(128, 128, 128, 0.158);
-            cursor: pointer;
-        }
-    }
-
-
-    .box-title {
-        display: inline-flex;
-        justify-content: space-between;
-        font-weight: bold;
-        color: var(--color-text-body);
-        // border: solid 1px black;
-    }
+    border-radius: var(--border-radius);
     
     .box-content {
         display: flex;
         flex-direction: column;
-        // gap: var(--space-xxxs);
-    
-        .popular {
-    
-        }
+        gap: var(--space-xxxs);
     
         .cover-image-thumb {
+            margin-top: var(--space-xxxs);
             transition: transform 0.3s ease;  /* Smooth transition for scale effect */
             overflow: hidden;  /* Hide parts of the image that scale outside the container */
             position: relative; /* Ensure positioning context */
+            border-radius: var(--border-radius);
         }
         .cover-image-thumb img {
             transition: transform 0.3s ease; /* Apply smooth transition to the image itself */
@@ -57,7 +28,9 @@
         }
         
         .title {
-            color: var(--color-primary-rotate);
+            font-family: 'Paytone One', sans-serif;
+            color: var(--color-tertiary);
+            // font-weight: bold;
         }
         .description {
             color: var(--color-text-header);
@@ -85,10 +58,41 @@
 
     .box-content:hover {
         filter: brightness(1.1);
-
         .cover-image-thumb img {
             transform: scale(1.1); /* Zoom in by 10% on hover */
             cursor: pointer;
         }
     }
+
+    &.popular {
+        
+        .box-content {
+            border-left: solid 4px var(--color-tertiary);
+            border-radius: var(--border-radius);
+            margin-top: var(--space-xxs);
+            margin-bottom: var(--space-xxs);
+            padding:var(--space-xxs);
+            background-color: rgba(128, 128, 128, 0.158);
+        }
+        .title {
+            padding-left: 10px;
+            font-size: var(--font-size-s);
+            overflow: hidden;
+            // font-weight: bold;
+            // font-family: 'Monofett', sans-serif;
+            // color: var(--color-primary-rotate);
+        }
+        .box-content:hover {
+            background-color: var(--color-tertiary);
+            border-radius: var(--border-radius);
+
+            cursor: pointer;
+            .title {
+                color: rgb(255, 255, 255);
+                text-shadow: 1px 1px 2px rgba(8, 8, 8, 0.212);
+            }
+        }
+    }
+
 }
+

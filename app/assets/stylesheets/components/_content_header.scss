@@ -1,0 +1,17 @@
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h3 {
+        font-family: 'Monofett';
+        letter-spacing: 2px;
+        font-weight: normal;
+        font-size: var(--font-size-xxxxl);
+    }
+
+    .svg {
+        // margin-top: -5px;
+        // padding-right: 5px;
+    }
+}
