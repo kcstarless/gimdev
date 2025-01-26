@@ -4,7 +4,7 @@
 <%= turbo_frame_tag "main_content_frame" do %> 
   <% if authenticated? %>
     <section class="form-container" aria-labelledby="new-post-heading">
-      <div class="post-navi">
+      <div class="content-header">
         <h3 id="new-post-heading">New Post</h3>
         <div style="display: inline-flex; align-items: center;">
           <%= image_tag("back.svg", class: "svg", alt: "Back to Home") %>

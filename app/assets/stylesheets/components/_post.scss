@@ -1,8 +1,12 @@
 .post-container {
     border: var(--border-light);
     padding: 20px;
-}
 
+}
+hr.mid {
+    height: 1px;
+    background-color: rgb(230, 230, 230);
+}
 .post-header {
     display: flex;
     flex-direction: column;
@@ -16,6 +20,7 @@
     .desc {
         font-size: var(--font-size-l);
     }
+    
 }
 
 .created-by {
