@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   # Keyword search
   get "keywords/search", to: "keywords#search", as: "keyword_search"
+  get "keywords", to: "keywords#index", as: "keywords"
 
   # Posts routes
   resources :posts do
