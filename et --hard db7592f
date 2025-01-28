@@ -1,0 +1,33 @@
+[33mdb7592f[m[33m ([m[1;36mHEAD[m[33m, [m[1;32mmain[m[33m)[m junk
+[33me1f6c45[m working with three.js
+[33m85225e8[m[33m ([m[1;31morigin/main[m[33m)[m updated post show
+[33m4a67675[m updated
+[33m07f2dd2[m updated post show & sidebar
+[33mccff10b[m updated index view
+[33mb87df35[m fixed home breadcrumb & back home button
+[33m7f7826b[m fixed sidebar issue not properly layout on show post
+[33m729e872[m fixed keywords controller search query error
+[33mf965042[m fixed flash global flash message
+[33m90aae20[m updated loging logic for guest
+[33ma593d67[m add guest login feature on new post
+[33m6d7ecd3[m updated
+[33mfd5e4ad[m Working App: - Added login dialog - Layout changes - Added three.js
+[33m6c20557[m added update and delete
+[33md56c7a6[m removed page controller testing
+[33m62223a0[m fixing lip issue
+[33m5be2328[m added rspec
+[33mf58228a[m reset to before importmap
+[33mff598e5[m update
+[33mbfc14ee[m update
+[33mfef049d[m first commit on issue 5
+[33m3afa1dd[m uploading to github
+[33m2487791[m before reseeding
+[33mee94982[m responsive menubar completed
+[33mce59653[m working on post view
+[33md62afdc[m added file upload to title
+[33m2c5857b[m updated
+[33mb3cdea8[m banner
+[33mafdbdcc[m adding keyword feature for new post
+[33me4cabaa[m added categories and association with post
+[33mcaae431[m preparing for db
+[33mcdba7c6[m setting up
