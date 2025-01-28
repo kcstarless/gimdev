@@ -15,6 +15,7 @@
     "@stimulus-components/dialog": "^1.0.1",
     "@stimulus-components/rails-nested-form": "^5.0.0",
     "axios": "^1.7.9",
+    "dat.gui": "^0.7.9",
     "nprogress": "^0.2.0",
     "sass": "^1.83.0",
     "stimulus": "^3.2.2",
