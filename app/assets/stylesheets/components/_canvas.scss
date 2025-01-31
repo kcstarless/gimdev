@@ -13,5 +13,11 @@ canvas {
     display: block; /* Remove any unwanted padding/margins */
     width: 100%; /* Responsive width */
     height: 100%; /* Responsive height */
-}
 
+    
+
+}
+.textMeshClass {
+    font-size: var(--font-size-xxxl);
+    filter: brightness(0.5);
+}

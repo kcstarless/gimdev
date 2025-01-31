@@ -1,196 +1,195 @@
 import { Controller } from "@hotwired/stimulus";
 import * as THREE from "three";
-import WebGL from 'three/addons/capabilities/WebGL.js';
-import axios from "axios"
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
-import { FontLoader } from 'three/addons/loaders/FontLoader.js';
-import { OrbitControls } from "three/examples/jsm/Addons.js";
-import * as dat from 'dat.gui';
+import { TrackballControls } from "three/examples/jsm/controls/TrackballControls.js";
+import { TTFLoader } from "three/examples/jsm/loaders/TTFLoader.js";
+import { Font } from 'three/examples/jsm/loaders/FontLoader.js'; // Corrected the import path
+import axios from "axios";
 
-// Connects to data-controller="threejs"
 export default class extends Controller {
   static targets = ["canvas"];
 
   connect() {
-    // SCENE
+    console.log("Three.js Canvas Connected!");
+    this.radiusValue = 20;
+    this.keywordObjects = [];
+    this.isMouseOverText = false;
+    this.initThree();
+    this.animate();
+  }
+
+  initThree() {
+    this.setupScene();
+    this.setupCamera();
+    this.setupRenderer();
+    this.setupControls();
+    this.addEventListeners();
+    this.loadKeywords();
+  }
+
+  setupScene() {
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0xFFD166);
+    this.scene.background = new THREE.Color(0x202025);
+  }
 
-    // CAMERA
-    this.camera = new THREE.PerspectiveCamera(
-      45,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000 
-    );
-    this.camera.position.set(10, 10, 40);
+  setupCamera() {
+    this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    this.camera.position.set(0, 0, 55);
+  }
 
-    // RENDERER
-    this.renderer = new THREE.WebGLRenderer();
+  setupRenderer() {
+    this.renderer = new THREE.WebGLRenderer({ antialias: true });
     this.renderer.setSize(this.canvasTarget.clientWidth, this.canvasTarget.clientHeight);
     this.canvasTarget.appendChild(this.renderer.domElement);
-
-    // CONTROLS
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    this.controls.update();
-
-    // HELPERS
-    // this.addHelpers();
-
-
-    this.addCenter();
-
-    // Store text meshes for animation
-    this.textMeshes = [];
-
-    // Initialize dat.GUI
-    this.initGUI();
-
-    if (WebGL.isWebGL2Available()) {
-      // Start animation loop
-      this.animate();
-      this.resizeCanvas(); // Adjust canvas size initially
-      window.addEventListener("resize", this.resizeCanvas.bind(this)); // Listen for window resize
-      this.loadKeywords();
-    } else {
-      const warning = WebGL.getWebGL2ErrorMessage();
-      document.getElementById('container').appendChild(warning);
-    }
   }
 
-  addCenter() {
-    console.log("HELLO");
-    this.centerGeo = new THREE.SphereGeometry(5, 15, 15);
-    this.centerMat = new THREE.MeshBasicMaterial({});
-    this.center = new THREE.Mesh(this.centerGeo, this.centerMat);
-    this.scene.add(this.center);
-  }
-  
-  // Helpers
-  addHelpers() {
-    const axesHelper = new THREE.AxesHelper(20);
-    this.scene.add(axesHelper);
+  setupControls() {
+    this.controls = new TrackballControls(this.camera, this.renderer.domElement);
+    this.controls.rotateSpeed = 2.0;
+    this.controls.zoomSpeed = 1.2;
+    this.controls.panSpeed = 0.8;
   }
 
-  // Initialize dat.GUI
-  initGUI() {
-    this.gui = new dat.GUI();
-
-    // Add controls for camera position
-    this.gui.add(this.camera.position, 'x', -100, 100).name('Camera X');
-    this.gui.add(this.camera.position, 'y', -100, 100).name('Camera Y');
-    this.gui.add(this.camera.position, 'z', 0, 200).name('Camera Z');
-
-    // Add controls for material color
-    this.materialColor = { color: '#FF5733' };
-    this.gui.addColor(this.materialColor, 'color').onChange((value) => {
-      this.textMeshes.forEach(mesh => {
-        mesh.material.color.set(value);
-      });
-    }).name('Font Color');
-  }
-  
-
-  // Load existing keywords based on frequency
-  loadKeywords() {
-    axios.get('/keywords')
-    .then((response) => {
-      // console.log("API Response:", response.data);
-      this.createWordCloud(response.data);
-    })
-    .catch((error) => {
-      console.error("Error fetching keywords: ", error);
-    });
-  }
-
-  // Method to create the word cloud from keyword data
-  createWordCloud(keywords) {
-    console.log("Creating word cloud with keywords:", keywords);
-
-    const material = new THREE.MeshBasicMaterial({ color: this.materialColor.color });
-
-    // Create a random position function
-    const randomPosition = () => {
-      return new THREE.Vector3(
-        (Math.random() - 0.5) * 20,  // X position (within a smaller range)
-        (Math.random() - 0.5) * 20,  // Y position (within a smaller range)
-        (Math.random() - 0.5) * 20   // Z position (within a smaller range)
-      );
-    };
-
-    // Loop through each keyword
-    keywords.forEach(keyword => {
-      const size = Math.max(keyword.frequency * 0.5, 1);  // Adjust size based on frequency
-      console.log(`Creating word: ${keyword.word} with size: ${size}`);
-      this.create3DWord(keyword.word, size, randomPosition(), material);
-
-    });
-  }
-
-  // Method to create 3D text for a word
-  create3DWord(word, size, position, material) {
-    const loader = new FontLoader();
-    // Load the font asynchronously
-    loader.load(
-      'https://threejs.org/examples/fonts/helvetiker_regular.typeface.json',  // Font URL
-      (font) => {
-        console.log("Font loaded successfully:", font);
-        
-        // Now that the font is loaded, create the TextGeometry
-        try {
-          const geometry = new TextGeometry(word, {
-            font: font,
-            size: size,
-            depth: 0.1,  // Thickness of the text
-            curveSegments: 12,  // Number of segments for the curves
-            bevelEnabled: true,  // Bevel effect for the text
-            bevelThickness: 0.2,
-            bevelSize: 0.1
-          });
-    
-          // Create the mesh using geometry and material
-          const mesh = new THREE.Mesh(geometry, material);
-          mesh.position.set(position.x, position.y, position.z);  // Set position
-          this.scene.add(mesh);  // Add mesh to the scene
-
-          // Store the mesh for animation
-          this.textMeshes.push(mesh);
-        } catch (error) {
-          console.error("Error creating TextGeometry:", error);
-        }
-      },
-      undefined,  // Optional progress callback
-      (error) => {
-        console.error("Error loading font:", error);
-      }
-    );
+  addEventListeners() {
+    this.hoveredMesh = null;
+    this.canvasTarget.addEventListener('mousemove', this.onMouseMove.bind(this));
+    this.canvasTarget.addEventListener('click', this.onMouseClick.bind(this));
   }
 
   animate() {
     requestAnimationFrame(this.animate.bind(this));
-
-    // Animate each text mesh
-    this.textMeshes.forEach((mesh, index) => {
-      // Rotate the text
-      mesh.rotation.y += 0.01;
-
-      // Add a floating effect
-      mesh.position.y += Math.sin(Date.now() * 0.001 + index) * 0.02;
-    });
-    
+    this.controls.update();
+    this.updateTextOpacity();
+    this.updateHoverColor();
+    if (this.keywordObjects.length > 0 && !this.isMouseOverText) {
+      this.rotateKeywords();
+    }
     this.renderer.render(this.scene, this.camera);
   }
 
-  resizeCanvas() {
-    // Get the current size of the canvas container
-    const width = this.canvasTarget.clientWidth;
-    const height = this.canvasTarget.clientHeight;
+  updateTextOpacity() {
+    const cameraDirection = new THREE.Vector3();
+    this.camera.getWorldDirection(cameraDirection);
+    this.scene.traverse((object) => {
+      if (object.isMesh && object.geometry.type === "TextGeometry") {
+        object.quaternion.copy(this.camera.quaternion);
+        const dotProduct = cameraDirection.dot(object.position.clone().normalize());
+        object.material.opacity = THREE.MathUtils.clamp(1 - Math.max(0, dotProduct), 0.1, 1.0);
+      }
+    });
+  }
 
-    // Resize renderer
-    this.renderer.setSize(width, height);
+  loadKeywords() {
+    axios.get('/keywords')
+      .then((response) => { this.createCloud(response.data); })
+      .catch((error) => { console.error("Error fetching keywords: ", error); });
+  }
 
-    // Update camera aspect ratio
-    this.camera.aspect = width / height;
-    this.camera.updateProjectionMatrix();
+  createCloud(keywords) {
+    const group = new THREE.Group();
+    this.keywordObjects = [];
+    const spherical = new THREE.Spherical();
+    const phiSpan = Math.PI / (keywords.length + 1);
+    const thetaSpan = (Math.PI * 2) / keywords.length;
+
+    const fontLoader = new TTFLoader();
+    fontLoader.load('/Righteous-Regular.ttf', (ttf) => {
+      const font = new Font(ttf);
+      keywords.forEach((keyword, index) => {
+        const phi = phiSpan * (index + 1);
+        const theta = thetaSpan * index;
+        const pos = new THREE.Vector3().setFromSpherical(spherical.set(this.radiusValue, phi, theta));
+        const wordMesh = this.createWord(keyword, pos, font);
+        group.add(wordMesh);
+        this.keywordObjects.push({ mesh: wordMesh, phi, theta });
+      });
+      this.scene.add(group);
+      this.group = group;
+    });
+  }
+
+  createWord(text, position, font) {
+    const geometry = new TextGeometry(text.word, {
+      font: font,
+      size: 5,
+      depth: 0.05,
+    });
+
+    const material = new THREE.MeshBasicMaterial({
+      color: 0xffffff,
+      toneMapped: false,
+      transparent: true,
+      opacity: 1.0,
+    });
+
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.copy(position);
+    mesh.userData.text = text.word;
+    return mesh;
+  }
+
+  onMouseMove(event) {
+    const rect = this.canvasTarget.getBoundingClientRect();
+    const mouse = new THREE.Vector2();
+    mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+    const raycaster = new THREE.Raycaster();
+    raycaster.setFromCamera(mouse, this.camera);
+
+    const intersects = raycaster.intersectObjects(this.scene.children, true);
+    if (intersects.length > 0) {
+      if (this.hoveredMesh !== intersects[0].object) {
+        this.hoveredMesh = intersects[0].object;
+        this.canvasTarget.style.cursor = 'pointer';
+        this.isMouseOverText = true;
+      }
+    } else {
+      this.hoveredMesh = null;
+      this.canvasTarget.style.cursor = 'default';
+      this.isMouseOverText = false;
+    }
+  }
+
+  updateHoverColor() {
+    if (this.hoveredMesh) {
+      this.hoveredMesh.material.color.lerp(new THREE.Color(0xd52a47), 0.1);
+    }
+
+    this.scene.traverse((object) => {
+      if (object.isMesh && object !== this.hoveredMesh) {
+        object.material.color.lerp(new THREE.Color(0xffffff), 0.1);
+      }
+    });
+  }
+
+  onMouseClick(event) {
+    const rect = this.canvasTarget.getBoundingClientRect();
+    const mouse = new THREE.Vector2();
+    mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+    const raycaster = new THREE.Raycaster();
+    raycaster.setFromCamera(mouse, this.camera);
+
+    const intersects = raycaster.intersectObjects(this.scene.children, true);
+    if (intersects.length > 0) {
+      const clickedObject = intersects[0].object;
+      if (clickedObject.isMesh && clickedObject.geometry.type === "TextGeometry") {
+        console.log("Text clicked: ", clickedObject.userData.text);
+        window.location.href = "/posts";
+      }
+    }
+  }
+
+  rotateKeywords() {
+    const rotationSpeed = 0.005;
+    const spherical = new THREE.Spherical();
+    this.keywordObjects.forEach((keywordObj) => {
+      keywordObj.theta += rotationSpeed;
+      const pos = new THREE.Vector3().setFromSpherical(spherical.set(this.radiusValue , keywordObj.phi, keywordObj.theta));
+      keywordObj.mesh.position.copy(pos);
+      keywordObj.mesh.quaternion.copy(this.camera.quaternion);
+    });
   }
 }
