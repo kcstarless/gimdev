@@ -102,6 +102,20 @@ class PostsController  < ApplicationController
     end
   end
 
+  def show_by_keyword
+    # Retrieve the keyword from the URL parameters
+    keyword = params[:keyword]
+
+    @keyword = Keyword.find_by(name: keyword)
+
+    if @keyword
+      @posts = @keyword.posts
+    else
+      flash[:alert] = "No posts found for the keyword '#{keyword}'"
+      redirect_to root_path
+    end
+  end
+
   private
 
   def set_post

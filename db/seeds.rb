@@ -24,8 +24,8 @@ end
 # Add user
 User.create!(
   email_address: 'jwgim7786@gmail.com',  # Make sure this email is unique
-  password: '2die4uOKAY',  # Use a secure password
-  password_confirmation: '2die4uOKAY',  # Ensure confirmation matches
+  password: '2die4u',  # Use a secure password
+  password_confirmation: '2die4u',  # Ensure confirmation matches
   first_name: 'David',  # Optional
   last_name: 'Gim'  # Optional
 )
