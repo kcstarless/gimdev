@@ -1,5 +1,5 @@
 class PostsController  < ApplicationController
-  allow_unauthenticated_access only: [ :index, :show, :new ]
+  allow_unauthenticated_access only: [ :index, :show, :new, :show_by_keyword ]
   before_action :set_post, only: [ :show, :edit, :update, :destroy ]
   before_action :increment_views, only: [ :show ]
 
