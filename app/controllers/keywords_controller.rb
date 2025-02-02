@@ -1,6 +1,7 @@
 # keywords_controller.rb
 
 class KeywordsController < ApplicationController
+  allow_unauthenticated_access only: [ :index, :search ]
   before_action :find_post, only: [ :create ]
 
   # Get all keywords
