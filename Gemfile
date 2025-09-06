@@ -69,7 +69,7 @@ end
 # added group :test, do
 gem "simple_form", "~> 5.1.0"
 gem "actiontext"
-gem "ruby-vips", "~> 2.2", ">= 2.2.2"
+gem "ruby-vips", "~> 2.2"
 
 gem "dockerfile-rails", ">= 1.7", :group => :development
 
